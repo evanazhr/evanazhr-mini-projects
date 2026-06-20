@@ -24,15 +24,14 @@ export default function Home() {
     }, [search, activeCategory])
 
     return (
-        <div className="min-h-[100dvh] flex flex-col bg-[#fffef0]">
-            <Navbar />
+        <div className="min-h-[100dvh] flex flex-col bg-background">
 
             <main className="flex-1">
                 {/* ── Hero ── */}
-                <section className="border-b-[3px] border-[#1a1a1a] bg-[#FF5252]">
+                <section className="border-b-[3px] border-nb-black bg-nb-red">
                     <div className="mx-auto max-w-5xl px-4 py-14 md:px-8 md:py-20 xl:px-16">
-                        <div className="mb-5 inline-flex items-center border-[2px] border-[#1a1a1a] bg-[#FFEB3B] px-3 py-1 shadow-[3px_3px_0px_#1a1a1a]">
-                            <span className="text-xs font-bold uppercase tracking-widest text-[#1a1a1a]">
+                        <div className="mb-5 inline-flex items-center border-[2px] border-nb-black bg-nb-yellow px-3 py-1 shadow-[3px_3px_0px_var(--nb-black)]">
+                            <span className="text-xs font-bold uppercase tracking-widest text-nb-black">
                                 Portfolio
                             </span>
                         </div>
@@ -46,31 +45,31 @@ export default function Home() {
                         </p>
 
                         <div className="mt-8 flex flex-wrap gap-3">
-                            <div className="border-[2px] border-[#1a1a1a] bg-white px-4 py-2 shadow-[3px_3px_0px_#1a1a1a]">
-                                <span className="text-2xl font-black text-[#1a1a1a]">{miniProjects.length}</span>
-                                <span className="ml-2 text-sm font-semibold text-[#555]">Projects</span>
+                            <div className="border-[2px] border-nb-black bg-white px-4 py-2 shadow-[3px_3px_0px_var(--nb-black)]">
+                                <span className="text-2xl font-black text-nb-black">{miniProjects.length}</span>
+                                <span className="ml-2 text-sm font-semibold text-nb-gray">Projects</span>
                             </div>
-                            <div className="border-[2px] border-[#1a1a1a] bg-white px-4 py-2 shadow-[3px_3px_0px_#1a1a1a]">
-                                <span className="text-2xl font-black text-[#1a1a1a]">{ALL_CATEGORIES.length - 1}</span>
-                                <span className="ml-2 text-sm font-semibold text-[#555]">Kategori</span>
+                            <div className="border-[2px] border-nb-black bg-white px-4 py-2 shadow-[3px_3px_0px_var(--nb-black)]">
+                                <span className="text-2xl font-black text-nb-black">{ALL_CATEGORIES.length - 1}</span>
+                                <span className="ml-2 text-sm font-semibold text-nb-gray">Kategori</span>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* ── Search & Filter ── */}
-                <section className="border-b-[3px] border-[#1a1a1a] bg-[#FFEB3B]">
+                <section className="border-b-[3px] border-nb-black bg-nb-yellow">
                     <div className="mx-auto max-w-5xl px-4 py-5 md:px-8 xl:px-16">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                             {/* Search */}
                             <div className="relative flex-1">
-                                <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#1a1a1a]" />
+                                <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-nb-black" />
                                 <input
                                     type="text"
                                     placeholder="Cari project..."
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
-                                    className="h-10 w-full border-[3px] border-[#1a1a1a] bg-white pl-9 pr-3 text-sm font-medium text-[#1a1a1a] placeholder:text-[#888] outline-none focus:shadow-[4px_4px_0px_#1a1a1a] transition-shadow duration-150"
+                                    className="h-10 w-full border-[3px] border-nb-black bg-white pl-9 pr-3 text-sm font-medium text-nb-black placeholder:text-[#888] outline-none focus:shadow-[4px_4px_0px_var(--nb-black)] transition-shadow duration-150"
                                 />
                             </div>
 
@@ -79,7 +78,7 @@ export default function Home() {
                                 <select
                                     value={activeCategory}
                                     onChange={(e) => setActiveCategory(e.target.value)}
-                                    className="h-10 appearance-none border-[3px] border-[#1a1a1a] bg-white pl-3 pr-8 text-sm font-bold text-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] outline-none cursor-pointer focus:shadow-[4px_4px_0px_#1a1a1a] transition-shadow duration-150"
+                                    className="h-10 appearance-none border-[3px] border-nb-black bg-white pl-3 pr-8 text-sm font-bold text-nb-black shadow-[3px_3px_0px_var(--nb-black)] outline-none cursor-pointer focus:shadow-[4px_4px_0px_var(--nb-black)] transition-shadow duration-150"
                                 >
                                     {ALL_CATEGORIES.map((cat) => (
                                         <option key={cat} value={cat}>{cat}</option>
@@ -88,7 +87,7 @@ export default function Home() {
                                 {/* custom chevron */}
                                 <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2">
                                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1L5 5L9 1" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M1 1L5 5L9 1" stroke="var(--nb-black)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                     </svg>
                                 </div>
                             </div>
@@ -100,11 +99,11 @@ export default function Home() {
                 <section className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                     {filtered.length === 0 ? (
                         <div className="flex flex-col items-center gap-4 py-20 text-center">
-                            <div className="border-[3px] border-[#1a1a1a] bg-[#FFEB3B] p-5 shadow-[5px_5px_0px_#1a1a1a]">
-                                <FolderOpen className="size-10 text-[#1a1a1a]" />
+                            <div className="border-[3px] border-nb-black bg-nb-yellow p-5 shadow-[5px_5px_0px_var(--nb-black)]">
+                                <FolderOpen className="size-10 text-nb-black" />
                             </div>
-                            <p className="text-lg font-black text-[#1a1a1a]">Tidak ada project ditemukan</p>
-                            <p className="text-sm font-medium text-[#555]">Coba kata kunci atau kategori lain</p>
+                            <p className="text-lg font-black text-nb-black">Tidak ada project ditemukan</p>
+                            <p className="text-sm font-medium text-nb-gray">Coba kata kunci atau kategori lain</p>
                         </div>
                     ) : (
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

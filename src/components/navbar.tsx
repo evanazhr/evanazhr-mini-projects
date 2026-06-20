@@ -14,12 +14,12 @@ export default function Navbar() {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="sticky top-0 z-[100] w-full bg-[#FFEB3B] border-b-[3px] border-[#1a1a1a]">
+        <header className="sticky top-0 z-[100] w-full bg-nb-yellow border-b-[3px] border-nb-black">
             <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 md:px-8 xl:px-16">
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center gap-2 font-bold text-[#1a1a1a] text-lg tracking-tight"
+                    className="flex items-center gap-2 font-bold text-nb-black text-lg tracking-tight"
                 >
                     <Code2 className="size-5" />
                     <span>evanazhr.mini.projects</span>
@@ -31,7 +31,7 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="px-3 py-1.5 text-sm font-semibold text-[#1a1a1a] border-[2px] border-transparent hover:border-[#1a1a1a] hover:bg-white hover:shadow-[3px_3px_0px_#1a1a1a] transition-all duration-150"
+                            className="px-3 py-1.5 text-sm font-semibold text-nb-black border-[2px] border-transparent hover:border-nb-black hover:bg-white hover:shadow-[3px_3px_0px_var(--nb-black)] transition-all duration-150"
                         >
                             {link.label}
                         </Link>
@@ -43,7 +43,7 @@ export default function Navbar() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub evanazhr"
-                        className="ml-1 flex items-center gap-1.5 border-[2px] border-[#1a1a1a] bg-[#1a1a1a] px-3 py-1.5 text-sm font-bold text-white shadow-[3px_3px_0px_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_#1a1a1a] transition-all duration-150"
+                        className="ml-1 flex items-center gap-1.5 border-[2px] border-nb-black bg-nb-black px-3 py-1.5 text-sm font-bold text-white shadow-[3px_3px_0px_var(--nb-black)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-black)] transition-all duration-150"
                     >
                         <FaGithub className="size-4" />
                         <span>GitHub</span>
@@ -52,7 +52,7 @@ export default function Navbar() {
 
                 {/* Mobile toggle */}
                 <button
-                    className="md:hidden p-1.5 border-[2px] border-[#1a1a1a] bg-white transition-all duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[3px_3px_0px_#1a1a1a]"
+                    className="md:hidden p-1.5 border-[2px] border-nb-black bg-white transition-all duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[3px_3px_0px_var(--nb-black)]"
                     onClick={() => setOpen((prev) => !prev)}
                     aria-label="Toggle menu"
                 >
@@ -62,14 +62,14 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             {open && (
-                <div className="border-t-[3px] border-[#1a1a1a] bg-[#FFEB3B] px-4 pb-4 pt-3 md:hidden">
+                <div className="border-t-[3px] border-nb-black bg-nb-yellow px-4 pb-4 pt-3 md:hidden">
                     <nav className="flex flex-col gap-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setOpen(false)}
-                                className="block px-3 py-2 text-sm font-semibold text-[#1a1a1a] border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_#1a1a1a] transition-all duration-150"
+                                className="block px-3 py-2 text-sm font-semibold text-nb-black border-[2px] border-nb-black bg-white shadow-[3px_3px_0px_var(--nb-black)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-black)] transition-all duration-150"
                             >
                                 {link.label}
                             </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setOpen(false)}
-                            className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white border-[2px] border-[#1a1a1a] bg-[#1a1a1a] shadow-[3px_3px_0px_#FFEB3B] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_#FFEB3B] transition-all duration-150"
+                            className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white border-[2px] border-nb-black bg-nb-black shadow-[3px_3px_0px_var(--nb-yellow)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-yellow)] transition-all duration-150"
                         >
                             <FaGithub className="size-4" />
                             GitHub

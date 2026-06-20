@@ -2,13 +2,18 @@
 
 import Link from "next/link"
 import { ArrowLeft, CheckCircle, XCircle } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import PageHeader from "@/components/page-header"
+import miniProjects from "@/data/mini-projects"
 
 export default function Palindrom() {
     const [text, setText] = useState('')
     const [result, setResult] = useState<{ isPalindrom: boolean; message: string } | null>(null)
+    const [pageHeaderData, setPageHeaderData] = useState(() => miniProjects.find(
+        (project) => project.id === 'palindrom')
+    )
 
     const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault()
@@ -27,34 +32,25 @@ export default function Palindrom() {
     }
 
     return (
-        <div className="min-h-[100dvh] flex flex-col bg-[#fffef0]">
-            <Navbar />
-
+        <div 
+            className="min-h-[100dvh] flex flex-col bg-background"
+            style={{ '--page-accent': pageHeaderData?.accent || 'var(--nb-blue)' } as React.CSSProperties}
+        >
             <main className="flex-1">
                 {/* Page header */}
-                <div className="border-b-[3px] border-[#1a1a1a] bg-[#2196F3]">
-                    <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
-                        <Link
-                            href="/"
-                            className="mb-4 inline-flex items-center gap-1.5 border-[2px] border-white/60 px-3 py-1 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
-                        >
-                            <ArrowLeft className="size-3.5" />
-                            Kembali
-                        </Link>
-                        <h1 className="text-3xl font-black text-white md:text-4xl">Palindrom Checker</h1>
-                        <p className="mt-1 text-sm font-medium text-white/80">
-                            Cek apakah sebuah kata atau kalimat merupakan palindrom.
-                        </p>
-                    </div>
-                </div>
+                <PageHeader
+                    title={pageHeaderData?.title || ""}
+                    description={pageHeaderData?.description || ""}
+                    accent={pageHeaderData?.accent || ""}
+                />
 
                 {/* Main card */}
                 <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                     <div className="mx-auto max-w-xl">
-                        <div className="border-[3px] border-[#1a1a1a] bg-white shadow-[6px_6px_0px_#1a1a1a]">
+                        <div className="nb-card">
                             {/* Card header */}
-                            <div className="border-b-[3px] border-[#1a1a1a] bg-[#FFEB3B] px-5 py-3">
-                                <h2 className="text-sm font-black uppercase tracking-widest text-[#1a1a1a]">
+                            <div className="nb-card-header bg-nb-yellow">
+                                <h2 className="text-sm font-black uppercase tracking-widest text-nb-black">
                                     Masukkan Teks
                                 </h2>
                             </div>
@@ -62,7 +58,7 @@ export default function Palindrom() {
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-5">
                                 <div className="flex flex-col gap-1.5">
-                                    <label htmlFor="text-input" className="text-xs font-bold uppercase tracking-wider text-[#555]">
+                                    <label htmlFor="text-input" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                         Teks
                                     </label>
                                     <input
@@ -75,13 +71,13 @@ export default function Palindrom() {
                                         }}
                                         placeholder="contoh: katak, radar, level..."
                                         required
-                                        className="h-11 w-full border-[3px] border-[#1a1a1a] bg-[#fffef0] px-3 text-base font-medium text-[#1a1a1a] placeholder:text-[#aaa] outline-none focus:bg-white focus:shadow-[4px_4px_0px_#2196F3] transition-shadow duration-150"
+                                        className="nb-input"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="h-11 w-full border-[3px] border-[#1a1a1a] bg-[#1a1a1a] text-sm font-black uppercase tracking-wider text-white shadow-[4px_4px_0px_#FFEB3B] transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FFEB3B] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#FFEB3B]"
+                                    className="nb-button"
                                 >
                                     Cek Sekarang
                                 </button>
@@ -90,24 +86,24 @@ export default function Palindrom() {
                             {/* Result */}
                             {result && (
                                 <div
-                                    className={`mx-5 mb-5 flex items-start gap-3 border-[3px] border-[#1a1a1a] p-4 ${
-                                        result.isPalindrom ? "bg-[#FFEB3B]" : "bg-[#FF5252]/10"
+                                    className={`nb-result-box mx-5 mb-5 ${
+                                        result.isPalindrom ? "bg-nb-yellow" : "bg-nb-red/10"
                                     }`}
                                 >
                                     {result.isPalindrom ? (
-                                        <CheckCircle className="mt-0.5 size-5 shrink-0 text-[#1a1a1a]" />
+                                        <CheckCircle className="mt-0.5 size-5 shrink-0 text-nb-black" />
                                     ) : (
-                                        <XCircle className="mt-0.5 size-5 shrink-0 text-[#FF5252]" />
+                                        <XCircle className="mt-0.5 size-5 shrink-0 text-nb-red" />
                                     )}
-                                    <p className="text-sm font-bold text-[#1a1a1a]">{result.message}</p>
+                                    <p className="text-sm font-bold text-nb-black">{result.message}</p>
                                 </div>
                             )}
                         </div>
 
                         {/* Info box */}
-                        <div className="mt-6 border-[3px] border-[#1a1a1a] bg-[#2196F3]/10 p-4 shadow-[4px_4px_0px_#1a1a1a]">
-                            <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a] mb-2">Apa itu palindrom?</p>
-                            <p className="text-sm font-medium text-[#555]" style={{ lineHeight: "1.6" }}>
+                        <div className="nb-info-box mt-6">
+                            <p className="text-xs font-bold uppercase tracking-wider text-nb-black mb-2">Apa itu palindrom?</p>
+                            <p className="text-sm font-medium text-nb-gray" style={{ lineHeight: "1.6" }}>
                                 Palindrom adalah kata atau kalimat yang jika dibaca dari depan dan belakang menghasilkan urutan yang sama.
                                 Contoh: <strong>katak</strong>, <strong>radar</strong>, <strong>level</strong>.
                                 Pengecekan mengabaikan huruf kapital dan spasi.

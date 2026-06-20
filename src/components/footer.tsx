@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa"
 
 export default function Footer() {
     return (
-        <footer className="border-t-[3px] border-[#1a1a1a] bg-[#1a1a1a]">
+        <footer className="border-t-[3px] border-nb-black bg-nb-black">
             <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     {/* Left — brand */}

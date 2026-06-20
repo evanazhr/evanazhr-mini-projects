@@ -11,11 +11,14 @@
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans);
 
-  /* neo brutalism brand colors */
-  --color-nb-yellow: #FFEB3B;
-  --color-nb-red: #FF5252;
-  --color-nb-blue: #2196F3;
-  --color-nb-black: #1a1a1a;
+  /* neo brutalism brand colors mapped to css variables */
+  --color-nb-yellow: var(--nb-yellow);
+  --color-nb-red: var(--nb-red);
+  --color-nb-blue: var(--nb-blue);
+  --color-nb-black: var(--nb-black);
+  --color-nb-beige: var(--nb-beige);
+  --color-nb-gray: var(--nb-gray);
+  --color-nb-placeholder: var(--nb-placeholder);
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -51,33 +54,43 @@
 }
 
 :root {
-  --background: #fffef0;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #1a1a1a;
-  --primary-foreground: #fffef0;
-  --secondary: #FFEB3B;
-  --secondary-foreground: #1a1a1a;
+  /* Neo Brutalism brand color variables */
+  --nb-yellow: #FFEB3B;
+  --nb-red: #FF5252;
+  --nb-blue: #2196F3;
+  --nb-black: #1a1a1a;
+  --nb-beige: #fffef0;
+  --nb-white: #ffffff;
+  --nb-gray: #555555;
+  --nb-placeholder: #aaaaaa;
+
+  --background: var(--nb-beige);
+  --foreground: var(--nb-black);
+  --card: var(--nb-white);
+  --card-foreground: var(--nb-black);
+  --popover: var(--nb-white);
+  --popover-foreground: var(--nb-black);
+  --primary: var(--nb-black);
+  --primary-foreground: var(--nb-beige);
+  --secondary: var(--nb-yellow);
+  --secondary-foreground: var(--nb-black);
   --muted: #f5f5e8;
-  --muted-foreground: #555555;
-  --accent: #FF5252;
-  --accent-foreground: #ffffff;
-  --destructive: #FF5252;
-  --border: #1a1a1a;
-  --input: #1a1a1a;
-  --ring: #1a1a1a;
+  --muted-foreground: var(--nb-gray);
+  --accent: var(--nb-red);
+  --accent-foreground: var(--nb-white);
+  --destructive: var(--nb-red);
+  --border: var(--nb-black);
+  --input: var(--nb-black);
+  --ring: var(--nb-black);
   --radius: 0px;
-  --sidebar: #fffef0;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #1a1a1a;
-  --sidebar-primary-foreground: #fffef0;
-  --sidebar-accent: #FFEB3B;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #1a1a1a;
-  --sidebar-ring: #1a1a1a;
+  --sidebar: var(--nb-beige);
+  --sidebar-foreground: var(--nb-black);
+  --sidebar-primary: var(--nb-black);
+  --sidebar-primary-foreground: var(--nb-beige);
+  --sidebar-accent: var(--nb-yellow);
+  --sidebar-accent-foreground: var(--nb-black);
+  --sidebar-border: var(--nb-black);
+  --sidebar-ring: var(--nb-black);
 }
 
 @layer base {
@@ -96,26 +109,100 @@
 /* Neo Brutalism utilities */
 @layer utilities {
   .nb-border {
-    border: 3px solid #1a1a1a;
+    border: 3px solid var(--nb-black);
   }
   .nb-shadow {
-    box-shadow: 4px 4px 0px #1a1a1a;
+    box-shadow: 4px 4px 0px var(--nb-black);
   }
   .nb-shadow-lg {
-    box-shadow: 6px 6px 0px #1a1a1a;
+    box-shadow: 6px 6px 0px var(--nb-black);
   }
   .nb-shadow-yellow {
-    box-shadow: 4px 4px 0px #FFEB3B;
+    box-shadow: 4px 4px 0px var(--nb-yellow);
   }
   .nb-hover {
     transition: transform 150ms ease-out, box-shadow 150ms ease-out;
   }
   .nb-hover:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px #1a1a1a;
+    box-shadow: 6px 6px 0px var(--nb-black);
   }
   .nb-hover:active {
     transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0px #1a1a1a;
+    box-shadow: 2px 2px 0px var(--nb-black);
+  }
+
+  /* Reusable Neo Brutalism Component Classes */
+  .nb-card {
+    background-color: var(--card);
+    border: 3px solid var(--nb-black);
+    box-shadow: 6px 6px 0px var(--nb-black);
+  }
+
+  .nb-card-header {
+    border-bottom: 3px solid var(--nb-black);
+    padding: 0.75rem 1.25rem;
+  }
+
+  .nb-input {
+    height: 2.75rem;
+    width: 100%;
+    border: 3px solid var(--nb-black);
+    background-color: var(--nb-beige);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--nb-black);
+    outline: none;
+    transition: box-shadow 150ms ease-out, background-color 150ms ease-out;
+  }
+  .nb-input::placeholder {
+    color: var(--nb-placeholder);
+  }
+  .nb-input:focus {
+    background-color: var(--card);
+    box-shadow: 4px 4px 0px var(--page-accent, var(--nb-blue));
+  }
+
+  .nb-button {
+    height: 2.75rem;
+    width: 100%;
+    border: 3px solid var(--nb-black);
+    background-color: var(--nb-black);
+    font-size: 0.875rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    box-shadow: 4px 4px 0px var(--button-shadow, var(--nb-yellow));
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nb-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--button-shadow, var(--nb-yellow));
+  }
+  .nb-button:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--button-shadow, var(--nb-yellow));
+  }
+
+  .nb-info-box {
+    border: 3px solid var(--nb-black);
+    background-color: color-mix(in srgb, var(--page-accent, var(--nb-blue)) 10%, transparent);
+    padding: 1rem;
+    box-shadow: 4px 4px 0px var(--nb-black);
+  }
+
+  .nb-result-box {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    border: 3px solid var(--nb-black);
+    padding: 1rem;
   }
 }
