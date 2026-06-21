@@ -1,4 +1,4 @@
-import { Slash, Type, ListTodo } from "lucide-react"
+import { Slash, Type, ListTodo, Key } from "lucide-react"
 import type { Project } from "@/types/project.type"
 
 const miniProjects: Project[] = [
@@ -30,6 +30,15 @@ const miniProjects: Project[] = [
         href: "/todo-list",
         accent: "#FF5252",
         icon: ListTodo,
+    },
+    {
+        id: "monoalphabetic-cipher",
+        title: "Monoalphabetic Cipher",
+        description: "Enkripsi dan dekripsi teks menggunakan sandi substitusi monoalfabetik.",
+        category: "Cryptography",
+        href: "/monoalphabetic-cipher",
+        accent: "#9C27B0",
+        icon: Key,
     }
 ]
 
