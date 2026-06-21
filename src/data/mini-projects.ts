@@ -1,4 +1,4 @@
-import { Slash, Type, ListTodo, Key } from "lucide-react"
+import { Slash, Type, ListTodo, Key, Dices } from "lucide-react"
 import type { Project } from "@/types/project.type"
 
 const miniProjects: Project[] = [
@@ -39,6 +39,15 @@ const miniProjects: Project[] = [
         href: "/monoalphabetic-cipher",
         accent: "#9C27B0",
         icon: Key,
+    },
+    {
+        id: "roll-dice",
+        title: "Roll Dice",
+        description: "Simulasi melempar dadu dengan animasi interaktif dan riwayat lemparan.",
+        category: "Game",
+        href: "/roll-dice",
+        accent: "#FF9800",
+        icon: Dices,
     }
 ]
 
