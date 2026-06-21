@@ -1,115 +1,149 @@
-"use client"
+'use client'
 
-import PageHeader from "@/components/page-header";
-import Footer from "@/components/footer";
-import miniProjects from "@/data/mini-projects";
-import { useState } from "react";
-import { Calculator } from "lucide-react";
-import React from "react";
+import Link from "next/link"
+import { Calculator } from "lucide-react"
+import { useState } from "react"
+import Footer from "@/components/footer"
+import PageHeader from "@/components/page-header"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import miniProjects from "@/data/mini-projects"
 
 export default function InterpolasiLinier() {
     const [pageHeaderData] = useState(() =>
         miniProjects.find((project) => project.id === 'interpolasi-linier')
-    );
+    )
 
-    const [x0, setX0] = useState<string>("");
-    const [fx0, setFx0] = useState<string>("");
-    const [x1, setX1] = useState<string>("");
-    const [fx1, setFx1] = useState<string>("");
-    const [x, setX] = useState<string>("");
-    const [f1x, setF1x] = useState<number | null>(null);
+    const [x0, setX0] = useState<string>("")
+    const [fx0, setFx0] = useState<string>("")
+    const [x1, setX1] = useState<string>("")
+    const [fx1, setFx1] = useState<string>("")
+    const [x, setX] = useState<string>("")
+    const [f1x, setF1x] = useState<number | null>(null)
 
     const interpolasiLinier = () => {
         if (x0 === "" || fx0 === "" || x1 === "" || fx1 === "" || x === "") {
-            alert("Semua input harus diisi!");
-            return;
+            alert("Semua input harus diisi!")
+            return
         }
 
-        const valX0 = Number(x0);
-        const valFx0 = Number(fx0);
-        const valX1 = Number(x1);
-        const valFx1 = Number(fx1);
-        const valX = Number(x);
+        const valX0 = Number(x0)
+        const valFx0 = Number(fx0)
+        const valX1 = Number(x1)
+        const valFx1 = Number(fx1)
+        const valX = Number(x)
 
         if (isNaN(valX0) || isNaN(valFx0) || isNaN(valX1) || isNaN(valFx1) || isNaN(valX)) {
-            alert("Semua input harus berupa angka yang valid!");
-            return;
+            alert("Semua input harus berupa angka yang valid!")
+            return
         }
 
         if (valX1 === valX0) {
-            alert("Nilai x1 tidak boleh sama dengan x0 untuk menghindari pembagian dengan nol.");
-            return;
+            alert("Nilai x1 tidak boleh sama dengan x0 untuk menghindari pembagian dengan nol.")
+            return
         }
 
-        const minX = Math.min(valX0, valX1);
-        const maxX = Math.max(valX0, valX1);
+        const minX = Math.min(valX0, valX1)
+        const maxX = Math.max(valX0, valX1)
 
         if (valX < minX) {
-            alert(`Nilai X tidak boleh lebih kecil dari ${minX}`);
-            return;
+            alert(`Nilai X tidak boleh lebih kecil dari ${minX}`)
+            return
         }
 
         if (valX > maxX) {
-            alert(`Nilai X tidak boleh lebih besar dari ${maxX}`);
-            return;
+            alert(`Nilai X tidak boleh lebih besar dari ${maxX}`)
+            return
         }
 
-        const hitung = valFx0 + ((valFx1 - valFx0) / (valX1 - valX0)) * (valX - valX0);
+        const hitung = valFx0 + ((valFx1 - valFx0) / (valX1 - valX0)) * (valX - valX0)
 
-        setF1x(hitung);
+        setF1x(hitung)
     }
 
     const resetFields = () => {
-        setX0("");
-        setFx0("");
-        setX1("");
-        setFx1("");
-        setX("");
-        setF1x(null);
+        setX0("")
+        setFx0("")
+        setX1("")
+        setFx1("")
+        setX("")
+        setF1x(null)
     }
+
+    const accentColor = pageHeaderData?.accent || '#54c125'
 
     return (
         <div 
             className="min-h-[100dvh] flex flex-col bg-background"
-            style={{ '--page-accent': pageHeaderData?.accent || '#54c125' } as React.CSSProperties}
+            style={{ '--page-accent': accentColor } as React.CSSProperties}
         >
             <main className="flex-1">
                 {/* Page header */}
                 <PageHeader
-                    title={pageHeaderData?.title || ""}
+                    title={pageHeaderData?.title || "Interpolasi Linear Calculator"}
                     description={pageHeaderData?.description || ""}
-                    accent={pageHeaderData?.accent || ""}
+                    accent={accentColor}
                 />
 
-                <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
-                    <div className="mx-auto max-w-xl">
-                        <div className="nb-card">
-                            {/* Card header */}
-                            <div className="nb-card-header bg-[#54c125]" style={{ backgroundColor: 'var(--page-accent)' }}>
-                                <h2 className="text-sm font-black uppercase tracking-widest text-white">
-                                    Masukkan Koordinat &amp; Titik X
-                                </h2>
-                            </div>
+                {/* Breadcrumb Navigation */}
+                <div className="mx-auto max-w-5xl px-4 pt-6 md:px-8 xl:px-16">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink asChild>
+                                    <Link href="/" className="font-bold text-nb-black hover:underline">
+                                        Home
+                                    </Link>
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage className="font-bold text-nb-gray">
+                                    Interpolasi Linear Calculator
+                                </BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </div>
 
-                            {/* Form fields */}
-                            <div className="flex flex-col gap-4 p-5">
+                {/* Main Content */}
+                <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
+                    <div className="mx-auto max-w-xl">
+                        <Card>
+                            {/* Card header */}
+                            <CardHeader className="bg-[#54c125]" style={{ backgroundColor: 'var(--page-accent)' }}>
+                                <CardTitle className="text-white">
+                                    Masukkan Koordinat &amp; Titik X
+                                </CardTitle>
+                            </CardHeader>
+
+                            {/* Card Content Form */}
+                            <CardContent className="p-5 flex flex-col gap-4">
                                 {/* Grid for x0 & f(x0) */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1.5">
                                         <label htmlFor="x0" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                             Titik x₀
                                         </label>
-                                        <input
+                                        <Input
                                             id="x0"
                                             type="text"
                                             inputMode="decimal"
                                             placeholder="contoh: 1"
                                             value={x0}
                                             onChange={(e) => {
-                                                setX0(e.target.value);
-                                                setF1x(null);
+                                                setX0(e.target.value)
+                                                setF1x(null)
                                             }}
-                                            className="nb-input"
                                             required
                                         />
                                     </div>
@@ -117,17 +151,16 @@ export default function InterpolasiLinier() {
                                         <label htmlFor="fx0" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                             Nilai f(x₀)
                                         </label>
-                                        <input
+                                        <Input
                                             id="fx0"
                                             type="text"
                                             inputMode="decimal"
                                             placeholder="contoh: 2"
                                             value={fx0}
                                             onChange={(e) => {
-                                                setFx0(e.target.value);
-                                                setF1x(null);
+                                                setFx0(e.target.value)
+                                                setF1x(null)
                                             }}
-                                            className="nb-input"
                                             required
                                         />
                                     </div>
@@ -139,17 +172,16 @@ export default function InterpolasiLinier() {
                                         <label htmlFor="x1" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                             Titik x₁
                                         </label>
-                                        <input
+                                        <Input
                                             id="x1"
                                             type="text"
                                             inputMode="decimal"
                                             placeholder="contoh: 3"
                                             value={x1}
                                             onChange={(e) => {
-                                                setX1(e.target.value);
-                                                setF1x(null);
+                                                setX1(e.target.value)
+                                                setF1x(null)
                                             }}
-                                            className="nb-input"
                                             required
                                         />
                                     </div>
@@ -157,17 +189,16 @@ export default function InterpolasiLinier() {
                                         <label htmlFor="fx1" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                             Nilai f(x₁)
                                         </label>
-                                        <input
+                                        <Input
                                             id="fx1"
                                             type="text"
                                             inputMode="decimal"
                                             placeholder="contoh: 6"
                                             value={fx1}
                                             onChange={(e) => {
-                                                setFx1(e.target.value);
-                                                setF1x(null);
+                                                setFx1(e.target.value)
+                                                setF1x(null)
                                             }}
-                                            className="nb-input"
                                             required
                                         />
                                     </div>
@@ -178,43 +209,42 @@ export default function InterpolasiLinier() {
                                     <label htmlFor="x" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                         Nilai x (yang dicari)
                                     </label>
-                                    <input
+                                    <Input
                                         id="x"
                                         type="text"
                                         inputMode="decimal"
                                         placeholder="contoh: 2 (harus di antara x₀ dan x₁)"
                                         value={x}
                                         onChange={(e) => {
-                                            setX(e.target.value);
-                                            setF1x(null);
+                                            setX(e.target.value)
+                                            setF1x(null)
                                         }}
-                                        className="nb-input"
                                         required
                                     />
                                 </div>
 
                                 {/* Buttons */}
                                 <div className="flex gap-3 mt-2">
-                                    <button
+                                    <Button
                                         type="button"
                                         onClick={interpolasiLinier}
-                                        className="nb-button flex-1"
+                                        className="flex-1"
                                         style={{ '--button-shadow': 'var(--page-accent)' } as React.CSSProperties}
                                     >
                                         Hitung
-                                    </button>
+                                    </Button>
                                     {(x0 || fx0 || x1 || fx1 || x) && (
-                                        <button
+                                        <Button
                                             type="button"
                                             onClick={resetFields}
-                                            className="nb-button bg-white text-nb-black border-nb-black hover:bg-nb-beige"
-                                            style={{ width: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', '--button-shadow': 'var(--nb-black)' } as React.CSSProperties}
+                                            variant="outline"
+                                            className="w-auto px-5"
                                         >
                                             Reset
-                                        </button>
+                                        </Button>
                                     )}
                                 </div>
-                            </div>
+                            </CardContent>
 
                             {/* Result display */}
                             {f1x !== null && (
@@ -223,20 +253,20 @@ export default function InterpolasiLinier() {
                                     style={{ backgroundColor: 'color-mix(in srgb, var(--page-accent) 15%, var(--nb-yellow) 85%)' }}
                                 >
                                     <Calculator className="mt-0.5 size-5 shrink-0 text-nb-black" />
-                                    <div>
+                                    <div className="flex-1 min-w-0 break-words">
                                         <p className="text-xs font-bold uppercase tracking-wider text-nb-gray">
                                             Hasil Interpolasi Linier
                                         </p>
                                         <p className="text-lg font-black text-nb-black mt-1">
                                             f₁({x}) = {f1x}
                                         </p>
-                                        <p className="text-xs text-nb-gray mt-1">
+                                        <p className="text-xs text-nb-gray mt-1 leading-relaxed">
                                             Formula: f({x}) = {fx0} + (({fx1} - {fx0}) / ({x1} - {x0})) * ({x} - {x0})
                                         </p>
                                     </div>
                                 </div>
                             )}
-                        </div>
+                        </Card>
 
                         {/* Info box */}
                         <div className="nb-info-box mt-6">
@@ -251,7 +281,6 @@ export default function InterpolasiLinier() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     )
 }

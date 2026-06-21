@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FaGithub } from "react-icons/fa"
+import { Button } from "@/components/ui/button"
 
 export default function Footer() {
     return (
@@ -23,16 +24,22 @@ export default function Footer() {
                             About
                         </Link>
                         <span className="text-white/30">·</span>
-                        <a
-                            href="https://github.com/evanazhr"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="GitHub evanazhr"
-                            className="flex items-center gap-1.5 border-[2px] border-white/20 px-2.5 py-1 text-xs font-bold text-white hover:border-white hover:bg-white/10 transition-all duration-150"
+                        <Button
+                            asChild
+                            variant="outline"
+                            size="xs"
+                            className="border-white/20 text-white hover:border-white hover:bg-white/10 bg-transparent shadow-none hover:shadow-none active:shadow-none hover:translate-y-0 hover:translate-x-0 active:translate-y-0 active:translate-x-0"
                         >
-                            <FaGithub className="size-3.5" />
-                            evanazhr
-                        </a>
+                            <a
+                                href="https://github.com/evanazhr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub evanazhr"
+                            >
+                                <FaGithub className="size-3.5" />
+                                evanazhr
+                            </a>
+                        </Button>
                     </div>
                 </div>
             </div>

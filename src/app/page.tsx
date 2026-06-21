@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import ProjectCard from "@/components/project-card"
 import miniProjects from "@/data/mini-projects"
+import { Input } from "@/components/ui/input"
 
 const ALL_CATEGORIES = ["Semua", ...Array.from(new Set(miniProjects.map((p) => p.category)))]
 
@@ -63,22 +64,22 @@ export default function Home() {
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                             {/* Search */}
                             <div className="relative flex-1">
-                                <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-nb-black" />
-                                <input
+                                <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-nb-black z-10" />
+                                <Input
                                     type="text"
                                     placeholder="Cari project..."
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
-                                    className="h-10 w-full border-[3px] border-nb-black bg-white pl-9 pr-3 text-sm font-medium text-nb-black placeholder:text-[#888] outline-none focus:shadow-[4px_4px_0px_var(--nb-black)] transition-shadow duration-150"
+                                    className="pl-9 h-10 bg-white"
                                 />
                             </div>
 
                             {/* Category dropdown */}
-                            <div className="relative">
+                            <div className="relative w-full sm:w-auto">
                                 <select
                                     value={activeCategory}
                                     onChange={(e) => setActiveCategory(e.target.value)}
-                                    className="h-10 appearance-none border-[3px] border-nb-black bg-white pl-3 pr-8 text-sm font-bold text-nb-black shadow-[3px_3px_0px_var(--nb-black)] outline-none cursor-pointer focus:shadow-[4px_4px_0px_var(--nb-black)] transition-shadow duration-150"
+                                    className="h-10 w-full sm:w-auto appearance-none border-[3px] border-nb-black bg-white pl-3 pr-8 text-sm font-bold text-nb-black shadow-[3px_3px_0px_var(--nb-black)] outline-none cursor-pointer focus:shadow-[4px_4px_0px_var(--nb-black)] transition-shadow duration-150"
                                 >
                                     {ALL_CATEGORIES.map((cat) => (
                                         <option key={cat} value={cat}>{cat}</option>
@@ -114,8 +115,6 @@ export default function Home() {
                     )}
                 </section>
             </main>
-
-            <Footer />
         </div>
     )
 }

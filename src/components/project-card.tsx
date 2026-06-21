@@ -1,6 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import type { Project } from "@/types/project.type"
 
 type Props = {
@@ -11,7 +13,7 @@ export default function ProjectCard({ project }: Props) {
     const { title, description, category, href, accent, image, icon: Icon } = project
 
     return (
-        <article className="group flex flex-col border-[3px] border-nb-black bg-card shadow-[5px_5px_0px_var(--nb-black)] transition-all duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0px_var(--nb-black)]">
+        <Card className="group flex flex-col transition-all duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0px_var(--nb-black)] shadow-[5px_5px_0px_var(--nb-black)]">
             {/* Thumbnail / Icon fallback */}
             <div
                 className="relative aspect-video w-full overflow-hidden border-b-[3px] border-nb-black flex items-center justify-center"
@@ -45,7 +47,7 @@ export default function ProjectCard({ project }: Props) {
             </div>
 
             {/* Body */}
-            <div className="flex flex-1 flex-col gap-3 p-4">
+            <CardContent className="flex flex-1 flex-col gap-3 p-4">
                 {/* category badge */}
                 <span
                     className="self-start border-[2px] border-nb-black px-2 py-0.5 text-xs font-black uppercase tracking-wider text-white"
@@ -62,14 +64,19 @@ export default function ProjectCard({ project }: Props) {
                     {description}
                 </p>
 
-                <Link
-                    href={href}
-                    className="mt-2 inline-flex items-center gap-1.5 self-start border-[2px] border-nb-black bg-nb-black px-3 py-1.5 text-sm font-bold text-white shadow-[3px_3px_0px_var(--nb-yellow)] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-yellow)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_var(--nb-yellow)]"
+                <Button
+                    asChild
+                    variant="default"
+                    size="sm"
+                    className="mt-2 self-start font-bold"
+                    style={{ '--button-shadow': accent } as React.CSSProperties}
                 >
-                    Lihat Project
-                    <ArrowRight className="size-3.5" />
-                </Link>
-            </div>
-        </article>
+                    <Link href={href}>
+                        Lihat Project
+                        <ArrowRight className="size-3.5" />
+                    </Link>
+                </Button>
+            </CardContent>
+        </Card>
     )
 }

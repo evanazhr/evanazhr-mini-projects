@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, X, Code2 } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
+import { Button } from "@/components/ui/button"
 
 const navLinks = [
     { label: "Home", href: "/" },
@@ -28,36 +29,49 @@ export default function Navbar() {
                 {/* Desktop nav */}
                 <nav className="hidden items-center gap-2 md:flex">
                     {navLinks.map((link) => (
-                        <Link
+                        <Button
                             key={link.href}
-                            href={link.href}
-                            className="px-3 py-1.5 text-sm font-semibold text-nb-black border-[2px] border-transparent hover:border-nb-black hover:bg-white hover:shadow-[3px_3px_0px_var(--nb-black)] transition-all duration-150"
+                            asChild
+                            variant="ghost"
+                            size="sm"
+                            className="text-nb-black hover:border-nb-black hover:bg-white"
                         >
-                            {link.label}
-                        </Link>
+                            <Link href={link.href}>
+                                {link.label}
+                            </Link>
+                        </Button>
                     ))}
 
                     {/* GitHub link */}
-                    <a
-                        href="https://github.com/evanazhr"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub evanazhr"
-                        className="ml-1 flex items-center gap-1.5 border-[2px] border-nb-black bg-nb-black px-3 py-1.5 text-sm font-bold text-white shadow-[3px_3px_0px_var(--nb-black)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-black)] transition-all duration-150"
+                    <Button
+                        asChild
+                        variant="default"
+                        size="sm"
+                        className="ml-1 font-bold"
                     >
-                        <FaGithub className="size-4" />
-                        <span>GitHub</span>
-                    </a>
+                        <a
+                            href="https://github.com/evanazhr"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub evanazhr"
+                        >
+                            <FaGithub className="size-4" />
+                            <span>GitHub</span>
+                        </a>
+                    </Button>
                 </nav>
 
                 {/* Mobile toggle */}
-                <button
-                    className="md:hidden p-1.5 border-[2px] border-nb-black bg-white transition-all duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[3px_3px_0px_var(--nb-black)]"
+                <Button
+                    variant="outline"
+                    size="icon-sm"
+                    className="md:hidden bg-white text-nb-black hover:bg-nb-yellow/40 active:translate-y-[1px]"
                     onClick={() => setOpen((prev) => !prev)}
                     aria-label="Toggle menu"
+                    style={{ '--button-shadow': 'var(--nb-black)' } as React.CSSProperties}
                 >
                     {open ? <X className="size-4" /> : <Menu className="size-4" />}
-                </button>
+                </Button>
             </div>
 
             {/* Mobile menu */}
@@ -65,25 +79,34 @@ export default function Navbar() {
                 <div className="border-t-[3px] border-nb-black bg-nb-yellow px-4 pb-4 pt-3 md:hidden">
                     <nav className="flex flex-col gap-2">
                         {navLinks.map((link) => (
-                            <Link
+                            <Button
                                 key={link.href}
-                                href={link.href}
+                                asChild
+                                variant="outline"
+                                className="w-full justify-start text-left bg-white text-nb-black"
                                 onClick={() => setOpen(false)}
-                                className="block px-3 py-2 text-sm font-semibold text-nb-black border-[2px] border-nb-black bg-white shadow-[3px_3px_0px_var(--nb-black)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-black)] transition-all duration-150"
                             >
-                                {link.label}
-                            </Link>
+                                <Link href={link.href}>
+                                    {link.label}
+                                </Link>
+                            </Button>
                         ))}
-                        <a
-                            href="https://github.com/evanazhr"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Button
+                            asChild
+                            variant="default"
+                            className="w-full justify-start font-bold"
                             onClick={() => setOpen(false)}
-                            className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white border-[2px] border-nb-black bg-nb-black shadow-[3px_3px_0px_var(--nb-yellow)] hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[5px_5px_0px_var(--nb-yellow)] transition-all duration-150"
+                            style={{ '--button-shadow': 'var(--nb-yellow)' } as React.CSSProperties}
                         >
-                            <FaGithub className="size-4" />
-                            GitHub
-                        </a>
+                            <a
+                                href="https://github.com/evanazhr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FaGithub className="size-4" />
+                                GitHub
+                            </a>
+                        </Button>
                     </nav>
                 </div>
             )}
