@@ -7,14 +7,6 @@ import Footer from "@/components/footer"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import miniProjects from "@/data/mini-projects"
 
 // Helper to define dot grid positions (1-indexed for CSS grid row/column mapping)
@@ -127,27 +119,6 @@ export default function RollDice() {
           description={pageHeaderData?.description || "Simulasi melempar dadu dengan animasi interaktif."}
           accent={accentColor}
         />
-
-        {/* Breadcrumb Navigation */}
-        <div className="mx-auto max-w-5xl px-4 pt-6 md:px-8 xl:px-16">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/" className="font-bold text-nb-black hover:underline">
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="font-bold text-nb-gray">
-                  Roll Dice
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
 
         {/* Main Content */}
         <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">

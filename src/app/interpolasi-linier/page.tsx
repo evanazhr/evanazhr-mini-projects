@@ -8,14 +8,6 @@ import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import miniProjects from "@/data/mini-projects"
 
 export default function InterpolasiLinier() {
@@ -94,29 +86,8 @@ export default function InterpolasiLinier() {
                     accent={accentColor}
                 />
 
-                {/* Breadcrumb Navigation */}
-                <div className="mx-auto max-w-5xl px-4 pt-6 md:px-8 xl:px-16">
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink asChild>
-                                    <Link href="/" className="font-bold text-nb-black hover:underline">
-                                        Home
-                                    </Link>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                <BreadcrumbPage className="font-bold text-nb-gray">
-                                    Interpolasi Linear Calculator
-                                </BreadcrumbPage>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
-                </div>
-
                 {/* Main Content */}
-                <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
+                <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                     <div className="mx-auto max-w-xl">
                         <Card>
                             {/* Card header */}
@@ -281,6 +252,7 @@ export default function InterpolasiLinier() {
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     )
 }

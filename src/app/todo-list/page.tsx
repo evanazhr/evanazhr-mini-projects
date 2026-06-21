@@ -9,14 +9,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import miniProjects from "@/data/mini-projects"
 
 type Task = {
@@ -161,27 +153,6 @@ export default function TodoList() {
           description={pageHeaderData?.description || "Kelola daftar tugas harian Anda dengan mudah."}
           accent={accentColor}
         />
-
-        {/* Breadcrumb Navigation */}
-        <div className="mx-auto max-w-5xl px-4 pt-6 md:px-8 xl:px-16">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/" className="font-bold text-nb-black hover:underline">
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="font-bold text-nb-gray">
-                  To-Do List
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
 
         {/* Main Content */}
         <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
