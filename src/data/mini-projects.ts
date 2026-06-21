@@ -1,4 +1,4 @@
-import { Slash, Type } from "lucide-react"
+import { Slash, Type, ListTodo } from "lucide-react"
 import type { Project } from "@/types/project.type"
 
 const miniProjects: Project[] = [
@@ -21,6 +21,15 @@ const miniProjects: Project[] = [
         accent: "#54c125",
         icon: Slash,
         // image: "/screenshots/palindrom.png",  // uncomment jika sudah ada screenshot
+    },
+    {
+        id: "todo-list",
+        title: "To-Do List",
+        description: "Kelola daftar tugas harian Anda dengan mudah.",
+        category: "Utility",
+        href: "/todo-list",
+        accent: "#FF5252",
+        icon: ListTodo,
     }
 ]
 

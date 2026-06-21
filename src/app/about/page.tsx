@@ -19,8 +19,6 @@ const socialLinks = [
 export default function About() {
     return (
         <div className="min-h-[100dvh] flex flex-col bg-background">
-            <Navbar />
-
             <main className="flex-1">
                 {/* Page header */}
                 <div className="border-b-[3px] border-nb-black bg-nb-yellow">
@@ -150,8 +148,6 @@ export default function About() {
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     )
 }
