@@ -2,8 +2,6 @@
 
 import { useState, useMemo } from "react"
 import { Search, FolderOpen } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import ProjectCard from "@/components/project-card"
 import miniProjects from "@/data/mini-projects"
 import { Input } from "@/components/ui/input"

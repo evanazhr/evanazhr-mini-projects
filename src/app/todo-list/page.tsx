@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { Check, Trash2, Pencil, ArrowUp, ArrowDown, Save, X, Plus, ListTodo } from "lucide-react"
-import Link from "next/link"
-import Footer from "@/components/footer"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -29,16 +27,19 @@ export default function TodoList() {
 
   // Load from localStorage on mount safely (Client-side only)
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("Tasks")
-      if (stored) {
-        setTasks(JSON.parse(stored))
+    const timer = setTimeout(() => {
+      try {
+        const stored = localStorage.getItem("Tasks")
+        if (stored) {
+          setTasks(JSON.parse(stored))
+        }
+      } catch (e) {
+        console.error("Gagal memuat tugas dari localStorage:", e)
+      } finally {
+        setIsLoaded(true)
       }
-    } catch (e) {
-      console.error("Gagal memuat tugas dari localStorage:", e)
-    } finally {
-      setIsLoaded(true)
-    }
+    }, 0)
+    return () => clearTimeout(timer)
   }, [])
 
   // Helper to save to localStorage
@@ -357,7 +358,6 @@ export default function TodoList() {
           </div>
         </div>
       </main>
-
     </div>
   )
 }

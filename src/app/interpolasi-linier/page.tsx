@@ -1,9 +1,7 @@
 'use client'
 
-import Link from "next/link"
 import { Calculator } from "lucide-react"
 import { useState } from "react"
-import Footer from "@/components/footer"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -252,7 +250,6 @@ export default function InterpolasiLinier() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     )
 }

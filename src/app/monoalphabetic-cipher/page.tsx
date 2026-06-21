@@ -1,9 +1,7 @@
 'use client'
 
-import { useEffect, useState, useMemo } from "react"
-import Link from "next/link"
+import { useState, useMemo } from "react"
 import { Key, ArrowRight, Copy, Check, Shuffle, AlertCircle } from "lucide-react"
-import Footer from "@/components/footer"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -24,19 +22,20 @@ export default function MonoalphabeticCipher() {
   )
 
   // Generate key dynamically from keyword
-  useEffect(() => {
-    if (keyword.trim() === "") {
+  const handleKeywordChange = (value: string) => {
+    setKeyword(value)
+    if (value.trim() === "") {
       setCipherKey(ALPHABET)
       return
     }
 
-    const normalized = keyword.toUpperCase().replace(/[^A-Z]/g, "")
+    const normalized = value.toUpperCase().replace(/[^A-Z]/g, "")
     const uniqueChars = Array.from(new Set(normalized))
     const combined = [...uniqueChars, ...ALPHABET.split("")]
     const finalKey = Array.from(new Set(combined)).slice(0, 26).join("")
     
     setCipherKey(finalKey)
-  }, [keyword])
+  }
 
   // Randomize key permutation
   const handleRandomizeKey = () => {
@@ -119,7 +118,7 @@ export default function MonoalphabeticCipher() {
                       id="keyword-input"
                       type="text"
                       value={keyword}
-                      onChange={(e) => setKeyword(e.target.value)}
+                      onChange={(e) => handleKeywordChange(e.target.value)}
                       placeholder="Masukkan kata kunci... (contoh: RAHASIA)"
                       className="w-full bg-white"
                     />
@@ -300,8 +299,6 @@ export default function MonoalphabeticCipher() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

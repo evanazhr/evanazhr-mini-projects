@@ -1,9 +1,7 @@
 'use client'
 
-import { useEffect, useState, useMemo } from "react"
-import Link from "next/link"
+import { useState, useMemo } from "react"
 import { Dices, RotateCcw, Play, BarChart3, Clock, HelpCircle } from "lucide-react"
-import Footer from "@/components/footer"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
@@ -248,7 +246,6 @@ export default function RollDice() {
                 </CardContent>
               </Card>
             </div>
-
           </div>
         </div>
       </main>

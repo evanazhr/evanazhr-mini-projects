@@ -1,8 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft, Code2, Layers, Wrench } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import miniProjects from "@/data/mini-projects"
 
 const skills = ["TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js"]
