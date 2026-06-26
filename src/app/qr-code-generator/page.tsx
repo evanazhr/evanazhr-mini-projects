@@ -122,7 +122,7 @@ export default function QRCodeGenerator() {
           accent="var(--chart-4)"
         />
 
-        <div className="mx-auto w-[calc(100% - 2rem)] max-w-5xl py-8 ">
+        <div className="mx-auto w-[calc(100%-2rem)] max-w-5xl py-8 ">
           <div className="grid gap-6 lg:grid-cols-3">
             
             {/* ── Left column: Input and Customization ── */}
