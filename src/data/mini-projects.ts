@@ -1,4 +1,4 @@
-import { Slash, Type, ListTodo, Key, Dices } from "lucide-react"
+import { Slash, Type, ListTodo, Key, Dices, QrCode } from "lucide-react"
 import type { Project } from "@/types/project.type"
 
 const miniProjects: Project[] = [
@@ -48,6 +48,15 @@ const miniProjects: Project[] = [
         href: "/roll-dice",
         accent: "#FF9800",
         icon: Dices,
+    },
+    {
+        id: "qr-code-generator",
+        title: "QR Code Generator",
+        description: "Buat kode QR kustom dari URL atau teks dengan fitur unduh dan pratinjau.",
+        category: "Utility",
+        href: "/qr-code-generator",
+        accent: "#00D696",
+        icon: QrCode,
     }
 ]
 

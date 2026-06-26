@@ -26,9 +26,9 @@ const socialLinks = [
         color: "bg-[#24292e] text-white",
     },
     {
-        label: "Kirim Email",
-        username: "evan.azhar@outlook.com",
-        href: "mailto:evan.azhar@outlook.com",
+        label: "Email",
+        username: "evanazhr@gmail.com",
+        href: "mailto:evanazhr@gmail.com",
         icon: Mail,
         color: "bg-chart-3 text-white",
     },
@@ -45,7 +45,7 @@ export default function About() {
                     accent="var(--chart-3)"
                 />
 
-                <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
+                <div className="mx-auto w-[calc(100%-2rem)] max-w-5xl py-8">
                     <div className="grid gap-6 lg:grid-cols-3">
 
                         {/* ── Left column: Bio & Project Info ── */}
