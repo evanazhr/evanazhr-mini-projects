@@ -15,14 +15,14 @@ export default function Navbar() {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="sticky top-0 z-[100] w-full bg-nb-yellow border-b-[3px] border-nb-black">
-            <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 md:px-8 xl:px-16">
+        <header className="sticky top-4 z-[100] mx-auto my-4 w-[calc(100%-2rem)] max-w-5xl bg-secondary-background border-2 border-border rounded-base shadow-shadow">
+            <div className="flex h-14 items-center justify-between px-4 md:px-6">
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center gap-2 font-bold text-nb-black text-lg tracking-tight"
+                    className="flex items-center gap-2 font-black text-foreground text-lg tracking-tight hover:opacity-90 transition-opacity"
                 >
-                    <Code2 className="size-5" />
+                    <Code2 className="size-5 text-foreground" />
                     <span>evanazhr.mini.projects</span>
                 </Link>
 
@@ -32,9 +32,9 @@ export default function Navbar() {
                         <Button
                             key={link.href}
                             asChild
-                            variant="ghost"
+                            variant="noShadow"
                             size="sm"
-                            className="text-nb-black hover:border-nb-black hover:bg-white"
+                            className="bg-transparent border-transparent text-foreground hover:bg-background hover:border-border font-base"
                         >
                             <Link href={link.href}>
                                 {link.label}
@@ -45,7 +45,7 @@ export default function Navbar() {
                     {/* GitHub link */}
                     <Button
                         asChild
-                        variant="default"
+                        variant="neutral"
                         size="sm"
                         className="ml-1 font-bold"
                     >
@@ -63,12 +63,10 @@ export default function Navbar() {
 
                 {/* Mobile toggle */}
                 <Button
-                    variant="outline"
-                    size="icon-sm"
-                    className="md:hidden bg-white text-nb-black hover:bg-nb-yellow/40 active:translate-y-[1px]"
+                    variant="neutral"
+                    className="md:hidden size-9 p-0 bg-secondary-background text-foreground flex items-center justify-center shadow-none hover:shadow-none hover:translate-x-0 hover:translate-y-0"
                     onClick={() => setOpen((prev) => !prev)}
                     aria-label="Toggle menu"
-                    style={{ '--button-shadow': 'var(--nb-black)' } as React.CSSProperties}
                 >
                     {open ? <X className="size-4" /> : <Menu className="size-4" />}
                 </Button>
@@ -76,14 +74,14 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             {open && (
-                <div className="border-t-[3px] border-nb-black bg-nb-yellow px-4 pb-4 pt-3 md:hidden">
+                <div className="border-t-2 border-border bg-secondary-background px-4 pb-4 pt-3 rounded-b-[8px] md:hidden">
                     <nav className="flex flex-col gap-2">
                         {navLinks.map((link) => (
                             <Button
                                 key={link.href}
                                 asChild
-                                variant="outline"
-                                className="w-full justify-start text-left bg-white text-nb-black"
+                                variant="neutral"
+                                className="w-full justify-start text-left bg-secondary-background text-foreground"
                                 onClick={() => setOpen(false)}
                             >
                                 <Link href={link.href}>
@@ -93,10 +91,9 @@ export default function Navbar() {
                         ))}
                         <Button
                             asChild
-                            variant="default"
-                            className="w-full justify-start font-bold"
+                            variant="neutral"
+                            className="w-full justify-start font-bold bg-secondary-background text-foreground"
                             onClick={() => setOpen(false)}
-                            style={{ '--button-shadow': 'var(--nb-yellow)' } as React.CSSProperties}
                         >
                             <a
                                 href="https://github.com/evanazhr"
@@ -113,3 +110,4 @@ export default function Navbar() {
         </header>
     )
 }
+

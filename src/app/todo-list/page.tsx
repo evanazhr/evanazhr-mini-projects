@@ -5,6 +5,7 @@ import { Check, Trash2, Pencil, ArrowUp, ArrowDown, Save, X, Plus, ListTodo } fr
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import miniProjects from "@/data/mini-projects"
@@ -140,11 +141,11 @@ export default function TodoList() {
     }
   }
 
-  const accentColor = pageHeaderData?.accent || '#FF5252'
+  const accentColor = pageHeaderData?.accent || 'var(--chart-3)'
 
   return (
     <div 
-      className="min-h-[100dvh] flex flex-col bg-background"
+      className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern"
       style={{ '--page-accent': accentColor } as React.CSSProperties}
     >
       <main className="flex-1">
@@ -159,10 +160,10 @@ export default function TodoList() {
         <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
           <div className="mx-auto max-w-xl">
             {/* Shadcn Card for Input Form */}
-            <Card className="mb-8">
+            <Card className="mb-8 p-0 overflow-hidden border-2 border-border shadow-shadow bg-secondary-background">
               {/* Card Header */}
-              <CardHeader className="bg-[#FF5252] text-white" style={{ backgroundColor: 'var(--page-accent)' }}>
-                <CardTitle className="text-white flex items-center gap-2">
+              <CardHeader style={{ backgroundColor: 'var(--page-accent)' }} className="text-white border-b-2 border-border px-5 py-3 flex flex-row items-center gap-2 space-y-0">
+                <CardTitle className="text-white text-sm font-black uppercase tracking-widest flex items-center gap-2">
                   <ListTodo className="size-4 text-white animate-bounce" />
                   Daftar Tugas Baru
                 </CardTitle>
@@ -171,18 +172,21 @@ export default function TodoList() {
               {/* Form Input */}
               <CardContent className="p-5">
                 <form onSubmit={handleAddTask} className="flex gap-3">
-                  <Input
-                    type="text"
-                    value={taskInput}
-                    onChange={(e) => setTaskInput(e.target.value)}
-                    placeholder="Masukkan tugas baru..."
-                    required
-                    className="flex-1"
-                  />
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <Label htmlFor="task-input" className="sr-only">Tugas Baru</Label>
+                    <Input
+                      id="task-input"
+                      type="text"
+                      value={taskInput}
+                      onChange={(e) => setTaskInput(e.target.value)}
+                      placeholder="Masukkan tugas baru..."
+                      required
+                      className="bg-background text-foreground"
+                    />
+                  </div>
                   <Button
                     type="submit"
-                    className="w-auto px-5 shrink-0"
-                    style={{ '--button-shadow': 'var(--page-accent)' } as React.CSSProperties}
+                    className="w-auto px-5 shrink-0 font-bold"
                     aria-label="Tambah tugas"
                   >
                     <Plus className="size-4 mr-1.5" />
@@ -203,10 +207,10 @@ export default function TodoList() {
                 </div>
               ) : tasks.length === 0 ? (
                 // Empty state
-                <div className="nb-info-box text-center py-10">
-                  <ListTodo className="size-10 mx-auto text-nb-gray mb-3 opacity-60" />
-                  <p className="text-sm font-bold text-nb-black">Belum ada tugas harian</p>
-                  <p className="text-xs text-nb-gray mt-1">Silakan tambahkan tugas baru menggunakan kolom di atas.</p>
+                <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-border rounded-base bg-secondary-background text-center">
+                  <ListTodo className="size-10 mx-auto text-foreground/40 mb-3 animate-pulse" />
+                  <p className="text-sm font-bold text-foreground">Belum ada tugas harian</p>
+                  <p className="text-xs text-foreground/60 mt-1">Silakan tambahkan tugas baru menggunakan kolom di atas.</p>
                 </div>
               ) : (
                 // Task List
@@ -217,8 +221,8 @@ export default function TodoList() {
                     return (
                       <li 
                         key={index} 
-                        className={`flex items-start justify-between p-4 bg-white border-[3px] border-nb-black shadow-[4px_4px_0px_var(--nb-black)] transition-all duration-150 gap-3 ${
-                          task.completed ? 'bg-nb-gray/5' : ''
+                        className={`flex items-start justify-between p-4 bg-secondary-background border-2 border-border rounded-base shadow-shadow transition-all duration-150 gap-3 ${
+                          task.completed ? 'opacity-85' : ''
                         }`}
                       >
                         {/* Checkbox & Task Content Wrapper */}
@@ -227,16 +231,11 @@ export default function TodoList() {
                           <Button
                             type="button"
                             onClick={() => handleToggleTask(index)}
-                            variant={task.completed ? "secondary" : "outline"}
-                            size="icon-xs"
-                            className="size-6 shrink-0 border-[3px] hover:bg-nb-yellow/40 active:translate-y-[1px] hover:-translate-x-0 hover:-translate-y-0 active:translate-x-0 mt-0.5"
-                            style={{
-                              boxShadow: task.completed ? '1px 1px 0px var(--nb-black)' : 'none',
-                              '--button-shadow': 'none'
-                            } as React.CSSProperties}
+                            variant={task.completed ? "default" : "neutral"}
+                            className="size-6 p-0 shrink-0 border-2 border-border rounded-base hover:translate-y-0 hover:translate-x-0 shadow-none hover:shadow-none"
                             aria-label={task.completed ? "Tandai belum selesai" : "Tandai selesai"}
                           >
-                            {task.completed && <Check className="size-4 stroke-[3px]" />}
+                            {task.completed && <Check className="size-4 stroke-[3px] text-main-foreground" />}
                           </Button>
 
                           {/* Task Text or Edit Input */}
@@ -246,16 +245,16 @@ export default function TodoList() {
                               value={editingText}
                               onChange={(e) => setEditingText(e.target.value)}
                               onKeyDown={(e) => {
-                                if (e.key === 'Enter') handleSaveEdit(index)
-                                if (e.key === 'Escape') handleCancelEdit()
+                                  if (e.key === 'Enter') handleSaveEdit(index)
+                                  if (e.key === 'Escape') handleCancelEdit()
                               }}
-                              className="h-8 py-1 flex-1 font-bold text-sm bg-white min-w-0"
+                              className="h-8 py-1 flex-1 font-bold text-sm bg-background text-foreground min-w-0"
                               autoFocus
                             />
                           ) : (
                             <p 
-                              className={`text-sm font-bold text-nb-black break-all whitespace-normal cursor-pointer select-none flex-1 min-w-0 pr-2 mt-0.5 ${
-                                task.completed ? 'line-through text-nb-gray decoration-[2px]' : ''
+                              className={`text-sm font-bold text-foreground break-all whitespace-normal cursor-pointer select-none flex-1 min-w-0 pr-2 mt-0.5 ${
+                                task.completed ? 'line-through text-foreground/50 decoration-[2px]' : ''
                               }`}
                               onClick={() => handleToggleTask(index)}
                               title={task.title}
@@ -272,9 +271,8 @@ export default function TodoList() {
                               <Button
                                 type="button"
                                 onClick={() => handleSaveEdit(index)}
-                                variant="outline"
-                                size="icon-sm"
-                                className="hover:bg-nb-yellow"
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-chart-4 hover:text-white"
                                 aria-label="Simpan perubahan"
                               >
                                 <Save className="size-3.5" />
@@ -282,9 +280,8 @@ export default function TodoList() {
                               <Button
                                 type="button"
                                 onClick={handleCancelEdit}
-                                variant="outline"
-                                size="icon-sm"
-                                className="hover:bg-nb-red hover:text-white"
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-chart-3 hover:text-white"
                                 aria-label="Batal edit"
                               >
                                 <X className="size-3.5" />
@@ -295,9 +292,8 @@ export default function TodoList() {
                               <Button
                                 type="button"
                                 onClick={() => handleStartEdit(index, task.title)}
-                                variant="outline"
-                                size="icon-sm"
-                                className="hover:bg-nb-blue hover:text-white"
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-chart-5 hover:text-white"
                                 aria-label="Edit tugas"
                               >
                                 <Pencil className="size-3.5" />
@@ -306,9 +302,8 @@ export default function TodoList() {
                                 type="button"
                                 onClick={() => handleMoveUp(index)}
                                 disabled={index === 0}
-                                variant="outline"
-                                size="icon-sm"
-                                className={index === 0 ? '' : 'hover:bg-nb-yellow'}
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-main"
                                 aria-label="Pindahkan ke atas"
                               >
                                 <ArrowUp className="size-3.5" />
@@ -317,9 +312,8 @@ export default function TodoList() {
                                 type="button"
                                 onClick={() => handleMoveDown(index)}
                                 disabled={index === tasks.length - 1}
-                                variant="outline"
-                                size="icon-sm"
-                                className={index === tasks.length - 1 ? '' : 'hover:bg-nb-yellow'}
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-main"
                                 aria-label="Pindahkan ke bawah"
                               >
                                 <ArrowDown className="size-3.5" />
@@ -327,9 +321,8 @@ export default function TodoList() {
                               <Button
                                 type="button"
                                 onClick={() => handleRemoveTask(index)}
-                                variant="outline"
-                                size="icon-sm"
-                                className="hover:bg-nb-red hover:text-white"
+                                variant="neutral"
+                                className="size-8 p-0 hover:bg-chart-3 hover:text-white"
                                 aria-label="Hapus tugas"
                               >
                                 <Trash2 className="size-3.5" />
@@ -345,11 +338,11 @@ export default function TodoList() {
             </div>
 
             {/* Info Box */}
-            <div className="nb-info-box mt-8">
-              <p className="text-xs font-bold uppercase tracking-wider text-nb-black mb-2">
+            <div className="flex flex-col gap-2 p-4 mt-8 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+              <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
                 Tips Penggunaan
               </p>
-              <ul className="text-xs font-medium text-nb-gray list-disc pl-4 space-y-1.5" style={{ lineHeight: "1.6" }}>
+              <ul className="text-xs font-semibold text-foreground/70 list-disc pl-4 space-y-1.5 leading-relaxed">
                 <li>Klik tombol check di sebelah kiri tugas untuk menandai tugas selesai atau belum selesai.</li>
                 <li>Gunakan tombol panah ke atas (↑) dan ke bawah (↓) untuk mengubah prioritas atau urutan tugas.</li>
                 <li>Tugas Anda disimpan secara lokal di browser, sehingga tidak akan hilang saat halaman dimuat ulang.</li>
@@ -361,3 +354,4 @@ export default function TodoList() {
     </div>
   )
 }
+

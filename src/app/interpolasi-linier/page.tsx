@@ -5,6 +5,7 @@ import { useState } from "react"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import miniProjects from "@/data/mini-projects"
 
@@ -69,11 +70,11 @@ export default function InterpolasiLinier() {
         setF1x(null)
     }
 
-    const accentColor = pageHeaderData?.accent || '#54c125'
+    const accentColor = pageHeaderData?.accent || 'var(--chart-4)'
 
     return (
         <div 
-            className="min-h-[100dvh] flex flex-col bg-background"
+            className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern"
             style={{ '--page-accent': accentColor } as React.CSSProperties}
         >
             <main className="flex-1">
@@ -87,10 +88,10 @@ export default function InterpolasiLinier() {
                 {/* Main Content */}
                 <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                     <div className="mx-auto max-w-xl">
-                        <Card>
+                        <Card className="p-0 overflow-hidden border-2 border-border shadow-shadow bg-secondary-background">
                             {/* Card header */}
-                            <CardHeader className="bg-[#54c125]" style={{ backgroundColor: 'var(--page-accent)' }}>
-                                <CardTitle className="text-white">
+                            <CardHeader style={{ backgroundColor: 'var(--page-accent)' }} className="text-white border-b-2 border-border px-5 py-3">
+                                <CardTitle className="text-white text-sm font-black uppercase tracking-widest">
                                     Masukkan Koordinat &amp; Titik X
                                 </CardTitle>
                             </CardHeader>
@@ -100,9 +101,9 @@ export default function InterpolasiLinier() {
                                 {/* Grid for x0 & f(x0) */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1.5">
-                                        <label htmlFor="x0" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <Label htmlFor="x0" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Titik x₀
-                                        </label>
+                                        </Label>
                                         <Input
                                             id="x0"
                                             type="text"
@@ -114,12 +115,13 @@ export default function InterpolasiLinier() {
                                                 setF1x(null)
                                             }}
                                             required
+                                            className="bg-background text-foreground"
                                         />
                                     </div>
                                     <div className="flex flex-col gap-1.5">
-                                        <label htmlFor="fx0" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <Label htmlFor="fx0" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Nilai f(x₀)
-                                        </label>
+                                        </Label>
                                         <Input
                                             id="fx0"
                                             type="text"
@@ -131,6 +133,7 @@ export default function InterpolasiLinier() {
                                                 setF1x(null)
                                             }}
                                             required
+                                            className="bg-background text-foreground"
                                         />
                                     </div>
                                 </div>
@@ -138,9 +141,9 @@ export default function InterpolasiLinier() {
                                 {/* Grid for x1 & f(x1) */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1.5">
-                                        <label htmlFor="x1" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <Label htmlFor="x1" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Titik x₁
-                                        </label>
+                                        </Label>
                                         <Input
                                             id="x1"
                                             type="text"
@@ -152,12 +155,13 @@ export default function InterpolasiLinier() {
                                                 setF1x(null)
                                             }}
                                             required
+                                            className="bg-background text-foreground"
                                         />
                                     </div>
                                     <div className="flex flex-col gap-1.5">
-                                        <label htmlFor="fx1" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <Label htmlFor="fx1" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Nilai f(x₁)
-                                        </label>
+                                        </Label>
                                         <Input
                                             id="fx1"
                                             type="text"
@@ -169,15 +173,16 @@ export default function InterpolasiLinier() {
                                                 setF1x(null)
                                             }}
                                             required
+                                            className="bg-background text-foreground"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Input for x */}
                                 <div className="flex flex-col gap-1.5">
-                                    <label htmlFor="x" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                    <Label htmlFor="x" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                         Nilai x (yang dicari)
-                                    </label>
+                                    </Label>
                                     <Input
                                         id="x"
                                         type="text"
@@ -189,6 +194,7 @@ export default function InterpolasiLinier() {
                                             setF1x(null)
                                         }}
                                         required
+                                        className="bg-background text-foreground"
                                     />
                                 </div>
 
@@ -197,8 +203,7 @@ export default function InterpolasiLinier() {
                                     <Button
                                         type="button"
                                         onClick={interpolasiLinier}
-                                        className="flex-1"
-                                        style={{ '--button-shadow': 'var(--page-accent)' } as React.CSSProperties}
+                                        className="flex-1 font-bold"
                                     >
                                         Hitung
                                     </Button>
@@ -206,8 +211,8 @@ export default function InterpolasiLinier() {
                                         <Button
                                             type="button"
                                             onClick={resetFields}
-                                            variant="outline"
-                                            className="w-auto px-5"
+                                            variant="neutral"
+                                            className="w-auto px-5 font-bold"
                                         >
                                             Reset
                                         </Button>
@@ -218,18 +223,18 @@ export default function InterpolasiLinier() {
                             {/* Result display */}
                             {f1x !== null && (
                                 <div 
-                                    className="nb-result-box mx-5 mb-5 bg-nb-yellow"
-                                    style={{ backgroundColor: 'color-mix(in srgb, var(--page-accent) 15%, var(--nb-yellow) 85%)' }}
+                                    className="flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-base shadow-shadow text-foreground"
+                                    style={{ backgroundColor: 'color-mix(in srgb, var(--page-accent) 15%, var(--main) 85%)' }}
                                 >
-                                    <Calculator className="mt-0.5 size-5 shrink-0 text-nb-black" />
+                                    <Calculator className="mt-0.5 size-5 shrink-0 text-foreground" />
                                     <div className="flex-1 min-w-0 break-words">
-                                        <p className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <p className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Hasil Interpolasi Linier
                                         </p>
-                                        <p className="text-lg font-black text-nb-black mt-1">
+                                        <p className="text-lg font-black text-foreground mt-1">
                                             f₁({x}) = {f1x}
                                         </p>
-                                        <p className="text-xs text-nb-gray mt-1 leading-relaxed">
+                                        <p className="text-xs text-foreground/70 mt-1 leading-relaxed">
                                             Formula: f({x}) = {fx0} + (({fx1} - {fx0}) / ({x1} - {x0})) * ({x} - {x0})
                                         </p>
                                     </div>
@@ -238,11 +243,11 @@ export default function InterpolasiLinier() {
                         </Card>
 
                         {/* Info box */}
-                        <div className="nb-info-box mt-6">
-                            <p className="text-xs font-bold uppercase tracking-wider text-nb-black mb-2">
+                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+                            <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
                                 Apa itu Interpolasi Linear?
                             </p>
-                            <p className="text-sm font-medium text-nb-gray" style={{ lineHeight: "1.6" }}>
+                            <p className="text-sm font-medium text-foreground/80 leading-relaxed">
                                 Interpolasi linear adalah metode untuk menentukan nilai di antara dua titik data yang diketahui secara linier.
                                 Metode ini mengasumsikan hubungan antara kedua titik tersebut membentuk garis lurus.
                             </p>

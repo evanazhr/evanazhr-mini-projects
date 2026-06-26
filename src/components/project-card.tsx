@@ -13,11 +13,11 @@ export default function ProjectCard({ project }: Props) {
     const { title, description, category, href, accent, image, icon: Icon } = project
 
     return (
-        <Card>
+        <Card className="bg-secondary-background border-2 border-border shadow-shadow overflow-hidden p-0">
             {/* Thumbnail / Icon fallback */}
-            <CardHeader>
+            <CardHeader className="p-0">
                 <div
-                    className="relative aspect-video w-full overflow-hidden border-b-[3px] border-nb-black flex items-center justify-center"
+                    className="relative aspect-video w-full overflow-hidden border-b-2 border-border flex items-center justify-center"
                     style={{ backgroundColor: accent + "22" }}
                 >
                     {image ? (
@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: Props) {
                             className="flex flex-col items-center justify-center gap-2"
                         >
                             <div
-                                className="border-[3px] border-nb-black p-4 shadow-[4px_4px_0px_var(--nb-black)]"
+                                className="border-2 border-border p-4 shadow-shadow"
                                 style={{ backgroundColor: accent }}
                             >
                                 <Icon className="size-10 text-white" strokeWidth={2.5} />
@@ -49,20 +49,20 @@ export default function ProjectCard({ project }: Props) {
             </CardHeader>
 
             {/* Body */}
-            <CardContent className="flex flex-1 flex-col gap-3 p-4">
+            <CardContent className="flex flex-1 flex-col gap-3 p-5">
                 {/* category badge */}
                 <span
-                    className="self-start border-[2px] border-nb-black px-2 py-0.5 text-xs font-black uppercase tracking-wider text-white"
+                    className="self-start border-2 border-border px-2 py-0.5 text-xs font-black uppercase tracking-wider text-white"
                     style={{ backgroundColor: accent }}
                 >
                     {category}
                 </span>
 
-                <h2 className="text-lg font-black leading-snug text-nb-black">
+                <h2 className="text-lg font-black leading-snug text-foreground">
                     {title}
                 </h2>
 
-                <p className="flex-1 text-sm font-medium text-nb-gray" style={{ lineHeight: "1.6" }}>
+                <p className="flex-1 text-sm font-medium text-foreground/70" style={{ lineHeight: "1.6" }}>
                     {description}
                 </p>
 
@@ -71,7 +71,6 @@ export default function ProjectCard({ project }: Props) {
                     variant="default"
                     size="sm"
                     className="mt-2 self-start font-bold"
-                    style={{ '--button-shadow': accent } as React.CSSProperties}
                 >
                     <Link href={href}>
                         Lihat Project
@@ -82,3 +81,4 @@ export default function ProjectCard({ project }: Props) {
         </Card>
     )
 }
+

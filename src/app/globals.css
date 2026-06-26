@@ -19,6 +19,7 @@
   --chart-4: #00D696;
   --chart-5: #0099FF;
   --chart-active-dot: #000;
+  --grid-color: rgba(0, 0, 0, 0.06);
 }
 
 .dark {
@@ -36,6 +37,7 @@
   --chart-4: #00BD84;
   --chart-5: #008AE5;
   --chart-active-dot: #fff;
+  --grid-color: rgba(255, 255, 255, 0.06);
 }
 
 @theme inline {
@@ -71,4 +73,11 @@
   h1, h2, h3, h4, h5, h6{
     @apply font-heading;
   }
+}
+
+.bg-grid-pattern {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }

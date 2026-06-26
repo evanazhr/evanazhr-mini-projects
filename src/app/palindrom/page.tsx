@@ -5,6 +5,7 @@ import { useState } from "react"
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import miniProjects from "@/data/mini-projects"
 
@@ -31,11 +32,11 @@ export default function Palindrom() {
         })
     }
 
-    const accentColor = pageHeaderData?.accent || 'var(--nb-blue)'
+    const accentColor = pageHeaderData?.accent || 'var(--chart-2)'
 
     return (
         <div 
-            className="min-h-[100dvh] flex flex-col bg-background"
+            className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern"
             style={{ '--page-accent': accentColor } as React.CSSProperties}
         >
             <main className="flex-1">
@@ -49,10 +50,10 @@ export default function Palindrom() {
                 {/* Main Content */}
                 <div className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                     <div className="mx-auto max-w-xl">
-                        <Card className="mb-8">
+                        <Card className="mb-8 p-0 overflow-hidden border-2 border-border shadow-shadow bg-secondary-background">
                             {/* Card header */}
-                            <CardHeader className="bg-nb-yellow">
-                                <CardTitle className="text-nb-black">
+                            <CardHeader className="bg-main border-b-2 border-border text-main-foreground px-5 py-3">
+                                <CardTitle className="text-main-foreground text-sm font-black uppercase tracking-widest">
                                     Masukkan Teks
                                 </CardTitle>
                             </CardHeader>
@@ -61,9 +62,9 @@ export default function Palindrom() {
                             <CardContent className="p-5">
                                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                                     <div className="flex flex-col gap-1.5">
-                                        <label htmlFor="text-input" className="text-xs font-bold uppercase tracking-wider text-nb-gray">
+                                        <Label htmlFor="text-input" className="text-xs font-bold uppercase tracking-wider text-foreground/70">
                                             Teks
-                                        </label>
+                                        </Label>
                                         <Input
                                             id="text-input"
                                             type="text"
@@ -74,13 +75,13 @@ export default function Palindrom() {
                                             }}
                                             placeholder="contoh: katak, radar, level..."
                                             required
+                                            className="bg-background text-foreground"
                                         />
                                     </div>
 
                                     <Button
                                         type="submit"
-                                        className="w-full"
-                                        style={{ '--button-shadow': 'var(--nb-yellow)' } as React.CSSProperties}
+                                        className="w-full font-bold"
                                     >
                                         Cek Sekarang
                                     </Button>
@@ -90,24 +91,24 @@ export default function Palindrom() {
                             {/* Result */}
                             {result && (
                                 <div
-                                    className={`nb-result-box mx-5 mb-5 ${
-                                        result.isPalindrom ? "bg-nb-yellow" : "bg-nb-red/10"
+                                    className={`flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-base shadow-shadow ${
+                                        result.isPalindrom ? "bg-main text-main-foreground" : "bg-chart-3/20 text-foreground"
                                     }`}
                                 >
                                     {result.isPalindrom ? (
-                                        <CheckCircle className="mt-0.5 size-5 shrink-0 text-nb-black" />
+                                        <CheckCircle className="mt-0.5 size-5 shrink-0 text-main-foreground" />
                                     ) : (
-                                        <XCircle className="mt-0.5 size-5 shrink-0 text-nb-red" />
+                                        <XCircle className="mt-0.5 size-5 shrink-0 text-chart-3" />
                                     )}
-                                    <p className="text-sm font-bold text-nb-black break-all flex-1 min-w-0">{result.message}</p>
+                                    <p className="text-sm font-bold break-all flex-1 min-w-0">{result.message}</p>
                                 </div>
                             )}
                         </Card>
 
                         {/* Info box */}
-                        <div className="nb-info-box mt-6">
-                            <p className="text-xs font-bold uppercase tracking-wider text-nb-black mb-2">Apa itu palindrom?</p>
-                            <p className="text-sm font-medium text-nb-gray" style={{ lineHeight: "1.6" }}>
+                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+                            <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">Apa itu palindrom?</p>
+                            <p className="text-sm font-medium text-foreground/80 leading-relaxed">
                                 Palindrom adalah kata atau kalimat yang jika dibaca dari depan dan belakang menghasilkan urutan yang sama.
                                 Contoh: <strong>katak</strong>, <strong>radar</strong>, <strong>level</strong>.
                                 Pengecekan mengabaikan huruf kapital dan spasi.
@@ -119,3 +120,4 @@ export default function Palindrom() {
         </div>
     )
 }
+
