@@ -33,8 +33,12 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - network first, falling back to cache
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests and local/http assets
-  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+  // Only handle GET requests and local assets, bypass Next.js internal files (HMR, chunks)
+  if (
+    event.request.method !== 'GET' || 
+    !event.request.url.startsWith(self.location.origin) ||
+    event.request.url.includes('/_next/')
+  ) {
     return;
   }
 
