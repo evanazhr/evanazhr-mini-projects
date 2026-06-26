@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Menu, X, Code2 } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 
@@ -20,9 +20,14 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center gap-2 font-black text-foreground text-lg tracking-tight hover:opacity-90 transition-opacity"
+                    className="flex items-center gap-2 font-black text-foreground text-lg tracking-tight hover:opacity-90 transition-opacity group"
                 >
-                    <Code2 className="size-5 text-foreground" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                        src="/icon-192.png" 
+                        alt="Logo evanazhr" 
+                        className="size-6 border-2 border-border bg-main rounded-base shadow-[1px_1px_0px_var(--border)] group-hover:scale-105 transition-transform duration-150 shrink-0" 
+                    />
                     <span>evanazhr.mini.projects</span>
                 </Link>
 
