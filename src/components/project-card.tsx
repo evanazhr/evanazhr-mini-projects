@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { Project } from "@/types/project.type"
 
@@ -13,38 +13,40 @@ export default function ProjectCard({ project }: Props) {
     const { title, description, category, href, accent, image, icon: Icon } = project
 
     return (
-        <Card className="group flex flex-col transition-all duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0px_var(--nb-black)] shadow-[5px_5px_0px_var(--nb-black)]">
+        <Card>
             {/* Thumbnail / Icon fallback */}
-            <div
-                className="relative aspect-video w-full overflow-hidden border-b-[3px] border-nb-black flex items-center justify-center"
-                style={{ backgroundColor: accent + "22" }}
-            >
-                {image ? (
-                    <Image
-                        src={image}
-                        alt={`Screenshot ${title}`}
-                        fill
-                        className="object-cover"
-                    />
-                ) : Icon ? (
-                    <div
-                        className="flex flex-col items-center justify-center gap-2"
-                    >
-                        <div
-                            className="border-[3px] border-nb-black p-4 shadow-[4px_4px_0px_var(--nb-black)]"
-                            style={{ backgroundColor: accent }}
-                        >
-                            <Icon className="size-10 text-white" strokeWidth={2.5} />
-                        </div>
-                    </div>
-                ) : null}
-
-                {/* bottom accent stripe */}
+            <CardHeader>
                 <div
-                    className="absolute bottom-0 left-0 h-1.5 w-full"
-                    style={{ backgroundColor: accent }}
-                />
-            </div>
+                    className="relative aspect-video w-full overflow-hidden border-b-[3px] border-nb-black flex items-center justify-center"
+                    style={{ backgroundColor: accent + "22" }}
+                >
+                    {image ? (
+                        <Image
+                            src={image}
+                            alt={`Screenshot ${title}`}
+                            fill
+                            className="object-cover"
+                        />
+                    ) : Icon ? (
+                        <div
+                            className="flex flex-col items-center justify-center gap-2"
+                        >
+                            <div
+                                className="border-[3px] border-nb-black p-4 shadow-[4px_4px_0px_var(--nb-black)]"
+                                style={{ backgroundColor: accent }}
+                            >
+                                <Icon className="size-10 text-white" strokeWidth={2.5} />
+                            </div>
+                        </div>
+                    ) : null}
+
+                    {/* bottom accent stripe */}
+                    <div
+                        className="absolute bottom-0 left-0 h-1.5 w-full"
+                        style={{ backgroundColor: accent }}
+                    />
+                </div>
+            </CardHeader>
 
             {/* Body */}
             <CardContent className="flex flex-1 flex-col gap-3 p-4">

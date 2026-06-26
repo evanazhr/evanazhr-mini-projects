@@ -1,208 +1,74 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-geist-sans);
-
-  /* neo brutalism brand colors mapped to css variables */
-  --color-nb-yellow: var(--nb-yellow);
-  --color-nb-red: var(--nb-red);
-  --color-nb-blue: var(--nb-blue);
-  --color-nb-black: var(--nb-black);
-  --color-nb-beige: var(--nb-beige);
-  --color-nb-gray: var(--nb-gray);
-  --color-nb-placeholder: var(--nb-placeholder);
-
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
-}
-
 :root {
-  /* Neo Brutalism brand color variables */
-  --nb-yellow: #FFEB3B;
-  --nb-red: #FF5252;
-  --nb-blue: #2196F3;
-  --nb-black: #1a1a1a;
-  --nb-beige: #fffef0;
-  --nb-white: #ffffff;
-  --nb-gray: #555555;
-  --nb-placeholder: #aaaaaa;
-
-  --background: var(--nb-beige);
-  --foreground: var(--nb-black);
-  --card: var(--nb-white);
-  --card-foreground: var(--nb-black);
-  --popover: var(--nb-white);
-  --popover-foreground: var(--nb-black);
-  --primary: var(--nb-black);
-  --primary-foreground: var(--nb-beige);
-  --secondary: var(--nb-yellow);
-  --secondary-foreground: var(--nb-black);
-  --muted: #f5f5e8;
-  --muted-foreground: var(--nb-gray);
-  --accent: var(--nb-red);
-  --accent-foreground: var(--nb-white);
-  --destructive: var(--nb-red);
-  --border: var(--nb-black);
-  --input: var(--nb-black);
-  --ring: var(--nb-black);
-  --radius: 0px;
-  --sidebar: var(--nb-beige);
-  --sidebar-foreground: var(--nb-black);
-  --sidebar-primary: var(--nb-black);
-  --sidebar-primary-foreground: var(--nb-beige);
-  --sidebar-accent: var(--nb-yellow);
-  --sidebar-accent-foreground: var(--nb-black);
-  --sidebar-border: var(--nb-black);
-  --sidebar-ring: var(--nb-black);
+  --background: oklch(96.79% 0.0654 102.26);
+  --secondary-background: oklch(100% 0 0);
+  --foreground: oklch(0% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --main: oklch(86.03% 0.176 92.36);
+  --border: oklch(0% 0 0);
+  --ring: oklch(0% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #FACC00;
+  --chart-2: #7A83FF;
+  --chart-3: #FF4D50;
+  --chart-4: #00D696;
+  --chart-5: #0099FF;
+  --chart-active-dot: #000;
 }
 
+.dark {
+  --background: oklch(29.28% 0.0373 94.38);
+  --secondary-background: oklch(23.93% 0 0);
+  --foreground: oklch(92.49% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --main: oklch(79.36% 0.1624 92.49);
+  --border: oklch(0% 0 0);
+  --ring: oklch(100% 0 0);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #E0B700;
+  --chart-2: #7A83FF;
+  --chart-3: #FF6669;
+  --chart-4: #00BD84;
+  --chart-5: #008AE5;
+  --chart-active-dot: #fff;
+}
+
+@theme inline {
+  --color-main: var(--main);
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground: var(--foreground);
+  --color-main-foreground: var(--main-foreground);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --spacing-boxShadowX: 4px;
+  --spacing-boxShadowY: 4px;
+  --spacing-reverseBoxShadowX: -4px;
+  --spacing-reverseBoxShadowY: -4px;
+  --radius-base: 10px;
+  --shadow-shadow: var(--shadow);
+  --font-weight-base: 500;
+  --font-weight-heading: 700;
+}
+  
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  html {
-    @apply font-sans;
-  }
-}
-
-/* Neo Brutalism utilities */
-@layer utilities {
-  .nb-border {
-    border: 3px solid var(--nb-black);
-  }
-  .nb-shadow {
-    box-shadow: 4px 4px 0px var(--nb-black);
-  }
-  .nb-shadow-lg {
-    box-shadow: 6px 6px 0px var(--nb-black);
-  }
-  .nb-shadow-yellow {
-    box-shadow: 4px 4px 0px var(--nb-yellow);
-  }
-  .nb-hover {
-    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-  }
-  .nb-hover:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--nb-black);
-  }
-  .nb-hover:active {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0px var(--nb-black);
+    @apply text-foreground font-base bg-background;
   }
 
-  /* Reusable Neo Brutalism Component Classes */
-  .nb-card {
-    background-color: var(--card);
-    border: 3px solid var(--nb-black);
-    box-shadow: 6px 6px 0px var(--nb-black);
-  }
-
-  .nb-card-header {
-    border-bottom: 3px solid var(--nb-black);
-    padding: 0.75rem 1.25rem;
-  }
-
-  .nb-input {
-    height: 2.75rem;
-    width: 100%;
-    border: 3px solid var(--nb-black);
-    background-color: var(--nb-beige);
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--nb-black);
-    outline: none;
-    transition: box-shadow 150ms ease-out, background-color 150ms ease-out;
-  }
-  .nb-input::placeholder {
-    color: var(--nb-placeholder);
-  }
-  .nb-input:focus {
-    background-color: var(--card);
-    box-shadow: 4px 4px 0px var(--page-accent, var(--nb-blue));
-  }
-
-  .nb-button {
-    height: 2.75rem;
-    width: 100%;
-    border: 3px solid var(--nb-black);
-    background-color: var(--nb-black);
-    font-size: 0.875rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #ffffff;
-    box-shadow: 4px 4px 0px var(--button-shadow, var(--nb-yellow));
-    transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .nb-button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--button-shadow, var(--nb-yellow));
-  }
-  .nb-button:active {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0px var(--button-shadow, var(--nb-yellow));
-  }
-
-  .nb-info-box {
-    border: 3px solid var(--nb-black);
-    background-color: color-mix(in srgb, var(--page-accent, var(--nb-blue)) 10%, transparent);
-    padding: 1rem;
-    box-shadow: 4px 4px 0px var(--nb-black);
-  }
-
-  .nb-result-box {
-    display: flex;
-    align-items: start;
-    gap: 0.75rem;
-    border: 3px solid var(--nb-black);
-    padding: 1rem;
+  h1, h2, h3, h4, h5, h6{
+    @apply font-heading;
   }
 }

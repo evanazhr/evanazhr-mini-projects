@@ -35,7 +35,7 @@ export default function Home() {
                             </span>
                         </div>
 
-                        <h1 className="mb-4 text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tight text-white">
+                        <h1 className="mb-4 text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tight text-white text-shadow-[3px_3px_0px_#000000]">
                             Mini Projects
                         </h1>
                         <p className="max-w-lg text-base font-medium text-white/90 md:text-lg" style={{ lineHeight: "1.6" }}>

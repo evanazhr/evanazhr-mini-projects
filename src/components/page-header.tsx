@@ -30,17 +30,17 @@ export default function PageHeader({
         >
             <div className="mx-auto max-w-5xl px-4 py-8 md:px-8 xl:px-16">
                 <Breadcrumb className="mb-4">
-                    <BreadcrumbList className="text-white/70 flex items-center">
+                    <BreadcrumbList>
                         <BreadcrumbItem>
-                            <BreadcrumbLink asChild className="hover:text-white text-white/80 font-bold">
+                            <BreadcrumbLink>
                                 <Link href="/">
                                     Home
                                 </Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
-                        <BreadcrumbSeparator className="text-white/50" />
+                        <BreadcrumbSeparator/>
                         <BreadcrumbItem>
-                            <BreadcrumbPage className="font-bold text-white">
+                            <BreadcrumbPage>
                                 {title}
                             </BreadcrumbPage>
                         </BreadcrumbItem>
