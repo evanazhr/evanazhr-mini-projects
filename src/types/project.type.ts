@@ -11,4 +11,6 @@ export type Project = {
     image?: string
     /** Lucide icon sebagai fallback saat image tidak tersedia. */
     icon?: LucideIcon
+    /** Set true untuk sembunyikan dari halaman utama (misal: WIP). */
+    hidden?: boolean
 }

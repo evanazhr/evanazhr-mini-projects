@@ -1,16 +1,33 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Slash, Type, ListTodo, Key, Dices, QrCode, Brain, FileText } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { Project } from "@/types/project.type"
+
+/**
+ * Icon registry — resolve icon dari project id (slug).
+ * Tambahkan entry baru di sini saat menambah project baru.
+ * Kalau tidak ada, fallback ke FileText.
+ */
+const ICON_MAP: Record<string, LucideIcon> = {
+    "palindrom": Type,
+    "interpolasi-linier": Slash,
+    "todo-list": ListTodo,
+    "monoalphabetic-cipher": Key,
+    "roll-dice": Dices,
+    "qr-code-generator": QrCode,
+    "brain-dump": Brain,
+}
 
 type Props = {
     project: Project
 }
 
 export default function ProjectCard({ project }: Props) {
-    const { title, description, category, href, accent, image, icon: Icon } = project
+    const { id, title, description, category, href, accent, image } = project
+    const Icon: LucideIcon = ICON_MAP[id] ?? FileText
 
     return (
         <Card className="bg-secondary-background border-2 border-border shadow-shadow overflow-hidden p-0">
@@ -27,10 +44,8 @@ export default function ProjectCard({ project }: Props) {
                             fill
                             className="object-cover"
                         />
-                    ) : Icon ? (
-                        <div
-                            className="flex flex-col items-center justify-center gap-2"
-                        >
+                    ) : (
+                        <div className="flex flex-col items-center justify-center gap-2">
                             <div
                                 className="border-2 border-border p-4 shadow-shadow"
                                 style={{ backgroundColor: accent }}
@@ -38,7 +53,7 @@ export default function ProjectCard({ project }: Props) {
                                 <Icon className="size-10 text-white" strokeWidth={2.5} />
                             </div>
                         </div>
-                    ) : null}
+                    )}
 
                     {/* bottom accent stripe */}
                     <div
@@ -81,4 +96,3 @@ export default function ProjectCard({ project }: Props) {
         </Card>
     )
 }
-

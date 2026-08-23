@@ -32,7 +32,7 @@ export default function PageHeader({
                 <Breadcrumb className="mb-4">
                     <BreadcrumbList>
                         <BreadcrumbItem>
-                            <BreadcrumbLink>
+                            <BreadcrumbLink asChild>
                                 <Link href="/">
                                     Home
                                 </Link>
