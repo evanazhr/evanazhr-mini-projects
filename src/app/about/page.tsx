@@ -5,8 +5,10 @@ import miniProjects from "@/data/mini-projects"
 import { Card, CardContent } from "@/components/ui/card"
 import PageHeader from "@/components/page-header"
 
+
+
 export const metadata: Metadata = {
-  title: "About",
+    title: "About",
 }
 
 const techStack = [
@@ -35,6 +37,9 @@ const socialLinks = [
 ]
 
 export default function About() {
+
+    const categoryCount = new Set(miniProjects.map((p) => p.category)).size
+
     return (
         <div className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern">
             <main className="flex-1">
@@ -75,38 +80,35 @@ export default function About() {
                                             </div>
                                         </div>
                                         <div>
-                                            <h2 className="text-2xl font-black text-foreground">evanazhr</h2>
-                                            <p className="text-sm font-bold text-chart-5 uppercase tracking-wide">Web Developer</p>
+                                            <h2 className="text-2xl font-black text-foreground">Evan Azhar Hartana</h2>
+                                            <p className="text-sm font-bold text-chart-5 uppercase tracking-wide">Fullstack Web Developer</p>
                                         </div>
                                     </div>
 
                                     {/* Description */}
                                     <p className="text-sm font-medium text-foreground/80 leading-relaxed">
-                                        Halo! Saya seorang web developer yang senang mempelajari hal baru melalui eksperimen langsung. 
-                                        Setiap mini project di dalam repositori ini dirancang khusus untuk memahami satu konsep pemrograman 
-                                        tertentu—baik itu algoritma, manipulasi DOM, pemrosesan data, maupun integrasi pustaka eksternal.
+                                        Halo! Saya seorang web developer yang senang mempelajari hal baru melalui eksperimen langsung.
+                                        Setiap mini project di dalam repositori ini dirancang khusus untuk bereksperimen dan membuat tools.
                                     </p>
 
                                     {/* Highlights */}
                                     <div className="border-2 border-border bg-background p-4 rounded-base">
-                                        <h3 className="text-xs font-black uppercase tracking-wider text-foreground/60 mb-3">Fokus & Pendekatan</h3>
+                                        <h3 className="text-xs font-black uppercase tracking-wider text-foreground/60 mb-3">Fokus & Pendekatan di website ini</h3>
                                         <ul className="grid gap-2.5 sm:grid-cols-2">
-                                            <li className="flex items-start gap-2 text-sm font-semibold text-foreground/80">
-                                                <span className="text-chart-4 mt-0.5 font-bold">✓</span>
-                                                <span>Eksperimen Interaktif</span>
-                                            </li>
-                                            <li className="flex items-start gap-2 text-sm font-semibold text-foreground/80">
-                                                <span className="text-chart-4 mt-0.5 font-bold">✓</span>
-                                                <span>Desain Neubrutalist</span>
-                                            </li>
-                                            <li className="flex items-start gap-2 text-sm font-semibold text-foreground/80">
-                                                <span className="text-chart-4 mt-0.5 font-bold">✓</span>
-                                                <span>Kode Bersih & Terstruktur</span>
-                                            </li>
-                                            <li className="flex items-start gap-2 text-sm font-semibold text-foreground/80">
-                                                <span className="text-chart-4 mt-0.5 font-bold">✓</span>
-                                                <span>Fungsionalitas Responsif</span>
-                                            </li>
+                                            {
+
+                                                [
+                                                    "Eksperimen Interaktif",
+                                                    "Tools untuk menunjang produktifitas",
+                                                    "Belajar kode yang terstruktur"
+                                                ].map((item, index) => (
+                                                    <li key={index} className="flex items-start gap-2 text-sm font-semibold text-foreground/80">
+                                                        <span className="text-chart-4 mt-0.5 font-bold">✓</span>
+                                                        <span>{item}</span>
+                                                    </li>
+                                                )
+                                                )
+                                            }
                                         </ul>
                                     </div>
                                 </CardContent>
@@ -124,9 +126,7 @@ export default function About() {
                                     </div>
 
                                     <p className="text-sm font-medium text-foreground/80 leading-relaxed">
-                                        Halaman ini mengumpulkan seluruh mini project yang telah saya bangun dalam satu platform terpadu. 
-                                        Dengan antarmuka yang kohesif dan responsif, Anda dapat langsung mencoba fungsionalitas dari setiap project 
-                                        tanpa perlu konfigurasi tambahan.
+                                        Stats project ini.
                                     </p>
 
                                     {/* Stats Grid */}
@@ -136,12 +136,8 @@ export default function About() {
                                             <p className="text-2xl font-black text-foreground mt-1">{miniProjects.length}</p>
                                         </div>
                                         <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
-                                            <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Framework</p>
-                                            <p className="text-sm font-black text-foreground mt-2">Next.js 15</p>
-                                        </div>
-                                        <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
-                                            <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Gaya UI</p>
-                                            <p className="text-sm font-black text-foreground mt-2">Neubrutalism</p>
+                                            <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Total Kategori</p>
+                                            <p className="text-2xl font-black text-foreground mt-2">{categoryCount}</p>
                                         </div>
                                         <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Status</p>
@@ -170,7 +166,7 @@ export default function About() {
                                     {/* Stack Items */}
                                     <div className="flex flex-col gap-2.5">
                                         {techStack.map((tech) => (
-                                            <div 
+                                            <div
                                                 key={tech.name}
                                                 className="flex items-center justify-between border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150"
                                             >
