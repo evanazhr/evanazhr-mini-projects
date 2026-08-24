@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Code2, Layers, Wrench, Mail, Globe, Sparkles } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
-import miniProjects from "@/data/mini-projects"
+import { getProjects } from "@/lib/get-projects"
 import { Card, CardContent } from "@/components/ui/card"
 import PageHeader from "@/components/page-header"
 
@@ -38,7 +38,8 @@ const socialLinks = [
 
 export default function About() {
 
-    const categoryCount = new Set(miniProjects.map((p) => p.category)).size
+    const projects = getProjects()
+    const categoryCount = new Set(projects.map((p) => p.category)).size
 
     return (
         <div className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern">
@@ -133,7 +134,7 @@ export default function About() {
                                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                                         <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Total Project</p>
-                                            <p className="text-2xl font-black text-foreground mt-1">{miniProjects.length}</p>
+                                            <p className="text-2xl font-black text-foreground mt-1">{projects.length}</p>
                                         </div>
                                         <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Total Kategori</p>

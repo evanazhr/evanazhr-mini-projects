@@ -1,25 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Slash, Type, ListTodo, Key, Dices, QrCode, Brain, FileText } from "lucide-react"
+import { ArrowRight, FileText } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { Project } from "@/types/project.type"
-
-/**
- * Icon registry — resolve icon dari project id (slug).
- * Tambahkan entry baru di sini saat menambah project baru.
- * Kalau tidak ada, fallback ke FileText.
- */
-const ICON_MAP: Record<string, LucideIcon> = {
-    "palindrom": Type,
-    "interpolasi-linier": Slash,
-    "todo-list": ListTodo,
-    "monoalphabetic-cipher": Key,
-    "roll-dice": Dices,
-    "qr-code-generator": QrCode,
-    "brain-dump": Brain,
-}
+import projectsMeta from "@/data/projects-meta"
 
 type Props = {
     project: Project
@@ -27,7 +13,9 @@ type Props = {
 
 export default function ProjectCard({ project }: Props) {
     const { id, title, description, category, href, accent, image } = project
-    const Icon: LucideIcon = ICON_MAP[id] ?? FileText
+    // Resolve icon dari projects-meta (single source of truth).
+    // Fallback ke FileText kalau slug belum terdaftar.
+    const Icon: LucideIcon = projectsMeta[id]?.icon ?? FileText
 
     return (
         <Card className="bg-secondary-background border-2 border-border shadow-shadow overflow-hidden p-0">

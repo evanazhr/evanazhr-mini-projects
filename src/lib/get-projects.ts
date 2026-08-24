@@ -49,9 +49,9 @@ export function getProjects(): Project[] {
             category: meta?.category ?? "Lainnya",
             href: `/${slug}`,
             accent: meta?.accent ?? "#7A83FF",
-            // icon tidak di-include — React components tidak bisa
+            // icon tidak di-include di sini — React components tidak bisa
             // di-serialize melewati server→client boundary.
-            // ProjectCard akan resolve icon dari slug (id).
+            // ProjectCard me-resolve icon langsung dari projects-meta berdasarkan id/slug.
             image: meta?.image,
             hidden: meta?.hidden ?? false,
         }

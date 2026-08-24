@@ -7,12 +7,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import miniProjects from "@/data/mini-projects"
+import projectsMeta from "@/data/projects-meta"
 
 export default function InterpolasiLinier() {
-    const [pageHeaderData] = useState(() =>
-        miniProjects.find((project) => project.id === 'interpolasi-linier')
-    )
+    const pageHeaderData = projectsMeta['interpolasi-linier']
 
     const [x0, setX0] = useState<string>("")
     const [fx0, setFx0] = useState<string>("")

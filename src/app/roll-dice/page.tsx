@@ -5,7 +5,7 @@ import { Dices, RotateCcw, Play, BarChart3, Clock, HelpCircle } from "lucide-rea
 import PageHeader from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import miniProjects from "@/data/mini-projects"
+import projectsMeta from "@/data/projects-meta"
 
 // Helper to define dot grid positions (1-indexed for CSS grid row/column mapping)
 const getDots = (value: number) => {
@@ -56,9 +56,7 @@ export default function RollDice() {
   const [isRolling, setIsRolling] = useState(false)
   const [rollHistory, setRollHistory] = useState<number[]>([])
 
-  const [pageHeaderData] = useState(() =>
-    miniProjects.find((project) => project.id === 'roll-dice')
-  )
+  const pageHeaderData = projectsMeta['roll-dice']
 
   // Simulation of roll animation
   const handleRoll = () => {

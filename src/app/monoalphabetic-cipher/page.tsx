@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import miniProjects from "@/data/mini-projects"
+import projectsMeta from "@/data/projects-meta"
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -18,9 +18,7 @@ export default function MonoalphabeticCipher() {
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt")
   const [copied, setCopied] = useState(false)
 
-  const [pageHeaderData] = useState(() =>
-    miniProjects.find((project) => project.id === 'monoalphabetic-cipher')
-  )
+  const pageHeaderData = projectsMeta['monoalphabetic-cipher']
 
   // Generate key dynamically from keyword
   const handleKeywordChange = (value: string) => {

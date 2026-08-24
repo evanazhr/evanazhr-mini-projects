@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import miniProjects from "@/data/mini-projects"
+import projectsMeta from "@/data/projects-meta"
 
 type Task = {
   title: string
@@ -22,9 +22,7 @@ export default function TodoList() {
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
   const [editingText, setEditingText] = useState("")
 
-  const [pageHeaderData] = useState(() =>
-    miniProjects.find((project) => project.id === 'todo-list')
-  )
+  const pageHeaderData = projectsMeta['todo-list']
 
   // Load from localStorage on mount safely (Client-side only)
   useEffect(() => {

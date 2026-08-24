@@ -7,14 +7,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import miniProjects from "@/data/mini-projects"
+import projectsMeta from "@/data/projects-meta"
 
 export default function Palindrom() {
     const [text, setText] = useState('')
     const [result, setResult] = useState<{ isPalindrom: boolean; message: string } | null>(null)
-    const [pageHeaderData] = useState(() => 
-        miniProjects.find((project) => project.id === 'palindrom')
-    )
+    const pageHeaderData = projectsMeta['palindrom']
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
