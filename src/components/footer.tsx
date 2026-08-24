@@ -9,14 +9,20 @@ export default function Footer() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     {/* Left — brand */}
                     <div className="flex flex-col gap-1">
-                        <span className="text-base font-black text-foreground tracking-tight">evanazhr.mini.projects</span>
+                        <span className="text-base font-black text-foreground tracking-tight">@evanazhr</span>
                         <span className="text-xs font-medium text-foreground/60">
-                            Dibuat untuk belajar &amp; bereksperimen
+                        Mini projects, tools and utility
                         </span>
                     </div>
 
                     {/* Right — links */}
                     <div className="flex items-center gap-3">
+                        <Link
+                            href="/"
+                            className="text-xs font-semibold text-foreground/70 hover:text-foreground transition-colors duration-150"
+                        >
+                            Home
+                        </Link>
                         <Link
                             href="/about"
                             className="text-xs font-semibold text-foreground/70 hover:text-foreground transition-colors duration-150"

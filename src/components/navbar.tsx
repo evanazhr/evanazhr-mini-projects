@@ -21,14 +21,8 @@ export default function Navbar() {
                 <Link
                     href="/"
                     className="flex items-center gap-2 font-black text-foreground text-lg tracking-tight hover:opacity-90 transition-opacity group"
-                >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img 
-                        src="/icon-192.png" 
-                        alt="Logo evanazhr" 
-                        className="size-6 border-2 border-border bg-main rounded-base shadow-[1px_1px_0px_var(--border)] group-hover:scale-105 transition-transform duration-150 shrink-0" 
-                    />
-                    <span>evanazhr.mini.projects</span>
+                >              
+                    <span>@evanazhr</span>
                 </Link>
 
                 {/* Desktop nav */}
