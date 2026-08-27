@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Card, CardContent } from '@/components/ui/card'
 
 type Note = {
   id: string
@@ -236,11 +237,10 @@ export default function BrainDump() {
                     key={idx}
                     onClick={() => setSelectedColor(idx)}
                     title={`Warna ${idx + 1}`}
-                    className={`size-6 rounded-sm border-2 transition-transform ${color.bg} ${
-                      selectedColor === idx
-                        ? 'border-black scale-110 shadow-[2px_2px_0px_#000]'
-                        : 'border-border hover:scale-105'
-                    }`}
+                    className={`size-6 rounded-sm border-2 transition-transform ${color.bg} ${selectedColor === idx
+                      ? 'border-black scale-110 shadow-[2px_2px_0px_#000]'
+                      : 'border-border hover:scale-105'
+                      }`}
                     aria-label={`Pilih warna ${idx + 1}`}
                   />
                 ))}
@@ -306,7 +306,7 @@ export default function BrainDump() {
               <Brain className="size-8 text-foreground/40" />
             </div>
             <div className="text-center">
-              <p className="font-heading font-black text-lg text-foreground/60">Pikiranmu kosong?</p>
+              <p className="font-heading font-black text-lg text-foreground/60">Banyak pikiran?</p>
               <p className="text-sm font-base text-foreground/40 mt-1">
                 Tulis sesuatu di atas, semua akan hilang sendiri.
               </p>
@@ -326,9 +326,8 @@ export default function BrainDump() {
                 <div
                   key={note.id}
                   id={`note-${note.id}`}
-                  className={`break-inside-avoid rounded-base border-2 border-border shadow-shadow flex flex-col transition-all duration-300 overflow-hidden ${colorBg} ${
-                    isDeleting ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100'
-                  }`}
+                  className={`break-inside-avoid rounded-base border-2 border-border shadow-shadow flex flex-col transition-all duration-300 overflow-hidden ${colorBg} ${isDeleting ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100'
+                    }`}
                 >
                   {/* Note content */}
                   <div className="p-4 flex-1">
@@ -356,9 +355,8 @@ export default function BrainDump() {
                       )}
                       <Clock className="size-3 text-foreground/50 shrink-0" />
                       <span
-                        className={`text-xs font-base tabular-nums ${
-                          isExpiringSoon ? 'text-[#FF5252] font-black' : 'text-foreground/60'
-                        }`}
+                        className={`text-xs font-base tabular-nums ${isExpiringSoon ? 'text-[#FF5252] font-black' : 'text-foreground/60'
+                          }`}
                       >
                         {timeLeft}
                       </span>
@@ -377,7 +375,21 @@ export default function BrainDump() {
             })}
           </div>
         )}
+      {/* Info Box */}
+      <Card className='bg-white'>
+        <CardContent>
+          <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
+            Apa itu brain dump?
+          </p>
+          <ul className="text-xs font-semibold text-foreground/70 list-disc pl-4 space-y-1.5 leading-relaxed">
+            <li>Metode untuk menumpahkan semua isi kepala, ide, dan kekhawatiran ke dalam tulisan tanpa perlu langsung memfilternya.</li>
+            <li>Membantu mengurangi beban kognitif (*mental clutter*) dan menurunkan rasa cemas akibat terlalu banyak hal yang dipikirkan.</li>
+            <li>Memudahkan kamu memilah mana tugas yang mendesak, penting, atau bisa ditunda setelah semuanya tercatat dengan rapi.</li>
+          </ul>
+        </CardContent>
+      </Card>
       </div>
+
     </div>
   )
 }
