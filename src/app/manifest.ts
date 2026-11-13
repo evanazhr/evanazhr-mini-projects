@@ -7,20 +7,20 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Kumpulan mini project interaktif oleh evanazhr.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
+    background_color: '#FACC00',
     theme_color: '#FACC00',
     icons: [
       {
-        src: '/icon-192.png',
+        src: '/pwa-icon-192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'maskable',
       },
       {
-        src: '/icon-512.png',
+        src: '/pwa-icon-512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any',
+        purpose: 'maskable',
       },
     ],
   }
