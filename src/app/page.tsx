@@ -1,6 +1,6 @@
 import { getProjects } from "@/lib/get-projects"
 import ProjectList from "@/components/project-list"
-import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 
 export default function Home() {
     const projects = getProjects()

@@ -1,4 +1,4 @@
-import { Brain, Slash, Type, ListTodo, Key, Dices, QrCode } from "lucide-react"
+import { Brain, Slash, Type, ListTodo, Key, Dices, QrCode, Globe, GitBranch, Receipt, Timer, SearchCode } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 /**
@@ -67,6 +67,41 @@ const projectsMeta: Record<string, ProjectMeta> = {
         category: "Utility",
         accent: "#FF5252",
         icon: Brain,
+    },
+    "http-status-explorer": {
+        title: "HTTP Status Explorer",
+        description: "Cari arti dan penggunaan kode status HTTP dengan cepat.",
+        category: "Developer Tools",
+        accent: "#2196F3",
+        icon: Globe,
+    },
+    "git-cheat-sheet": {
+        title: "Git Cheat Sheet",
+        description: "Temukan command Git berdasarkan workflow dan salin dengan satu klik.",
+        category: "Developer Tools",
+        accent: "#FF9800",
+        icon: GitBranch,
+    },
+    "expense-splitter": {
+        title: "Expense Splitter",
+        description: "Bagi tagihan bersama teman dan lihat siapa membayar atau menerima.",
+        category: "Finance",
+        accent: "#00D696",
+        icon: Receipt,
+    },
+    "pomodoro": {
+        title: "Pomodoro Timer",
+        description: "Fokus dengan countdown kerja, waktu istirahat, alarm, dan riwayat sesi.",
+        category: "Productivity",
+        accent: "#FF5252",
+        icon: Timer,
+    },
+    "regex-tester": {
+        title: "Regex Tester",
+        description: "Uji regular expression dan lihat match serta capture group secara langsung.",
+        category: "Developer Tools",
+        accent: "#9C27B0",
+        icon: SearchCode,
     },
 }
 

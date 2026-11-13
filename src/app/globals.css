@@ -6,12 +6,13 @@
 :root {
   --background: oklch(96.79% 0.0654 102.26);
   --secondary-background: oklch(100% 0 0);
-  --foreground: oklch(0% 0 0);
-  --main-foreground: oklch(0% 0 0);
+  /* Warm paper, ink, and signal colors: deliberately flat for neubrutalist clarity. */
+  --foreground: oklch(18% 0 0);
+  --main-foreground: oklch(18% 0 0);
   --main: oklch(86.03% 0.176 92.36);
-  --border: oklch(0% 0 0);
-  --ring: oklch(0% 0 0);
-  --overlay: oklch(0% 0 0 / 0.8);
+  --border: oklch(18% 0 0);
+  --ring: oklch(18% 0 0);
+  --overlay: oklch(18% 0 0 / 0.8);
   --shadow: 4px 4px 0px 0px var(--border);
   --chart-1: #FACC00;
   --chart-2: #7A83FF;
@@ -66,12 +67,35 @@
 }
   
 @layer base {
+  * {
+    border-color: var(--border);
+  }
+
   body {
     @apply text-foreground font-base bg-background;
   }
 
-  h1, h2, h3, h4, h5, h6{
+  h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+
+  ::selection {
+    background: var(--main);
+    color: var(--main-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
 }
 
