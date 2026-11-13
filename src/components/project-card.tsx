@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: Props) {
     const Icon: LucideIcon = projectsMeta[id]?.icon ?? FileText
 
     return (
-        <Card className="bg-secondary-background border-2 border-border shadow-shadow overflow-hidden p-0">
+        <Card className="group bg-secondary-background border-2 border-border shadow-shadow overflow-hidden p-0 transition-transform duration-200 ease-out hover:-translate-y-1 motion-reduce:transition-none">
             {/* Thumbnail / Icon fallback */}
             <CardHeader className="p-0">
                 <div
@@ -33,7 +33,7 @@ export default function ProjectCard({ project }: Props) {
                             className="object-cover"
                         />
                     ) : (
-                        <div className="flex flex-col items-center justify-center gap-2">
+                        <div className="flex flex-col items-center justify-center gap-2 transition-transform duration-200 ease-out group-hover:scale-105 motion-reduce:transition-none">
                             <div
                                 className="border-2 border-border p-4 shadow-shadow"
                                 style={{ backgroundColor: accent }}
@@ -73,7 +73,7 @@ export default function ProjectCard({ project }: Props) {
                     asChild
                     variant="default"
                     size="sm"
-                    className="mt-2 self-start font-bold"
+                    className="mt-2 self-start font-bold transition-transform duration-150 motion-reduce:transition-none"
                 >
                     <Link href={href}>
                         Lihat Project

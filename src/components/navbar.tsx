@@ -1,8 +1,9 @@
 'use client'
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
-import { Menu, X } from "lucide-react"
+import { Home, Menu, UserRound, X } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -13,6 +14,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+    const pathname = usePathname()
     const [open, setOpen] = useState(false)
     const navRef = useRef<HTMLElement | null>(null)
 
@@ -32,18 +34,31 @@ export default function Navbar() {
         }
     }, [open])
 
+    useEffect(() => {
+        setOpen(false)
+    }, [pathname])
+
+    useEffect(() => {
+        document.body.style.overflow = open ? "hidden" : ""
+        return () => { document.body.style.overflow = "" }
+    }, [open])
+
     return (
-        <header 
+        <header
             ref={navRef}
-            className="sticky top-4 z-[100] mx-auto my-4 w-[calc(100%-2rem)] max-w-5xl bg-secondary-background border-2 border-border rounded-base shadow-shadow overflow-hidden"
+            className="hidden md:block fixed left-2 right-2 z-[100] mx-auto w-[calc(100%-1rem)] max-w-5xl rounded-base border-2 border-border bg-secondary-background shadow-shadow md:fixed md:inset-x-0 md:bottom-auto md:left-0 md:right-0 md:top-4 md:my-0 md:w-[calc(100%-2rem)] md:overflow-hidden"
         >
-            <div className="flex h-14 items-center justify-between px-4 md:px-6">
+            <div className="flex min-h-14 items-center justify-between px-3 pb-[env(safe-area-inset-bottom)] sm:px-4 md:px-6 md:pb-0">
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center gap-2 font-black text-foreground text-lg tracking-tight hover:opacity-90 transition-opacity group"
+                    aria-label="Kembali ke beranda"
+                    className="flex min-w-0 items-center gap-2 truncate text-base font-black tracking-tight text-foreground transition-opacity hover:opacity-90 sm:text-lg"
                 >              
-                    <span>@evanazhr</span>
+                    <span className="flex size-9 shrink-0 items-center justify-center border-2 border-border bg-main text-sm font-black shadow-[2px_2px_0_var(--border)]" aria-hidden="true">
+                        MP
+                    </span>
+                    <span className="truncate">mini projects</span>
                 </Link>
 
                 {/* Desktop nav */}
@@ -80,12 +95,22 @@ export default function Navbar() {
                     </Button>
                 </nav>
 
-                {/* Mobile toggle dengan icon cross-fade */}
+                {/* Mobile keeps a compact brand row; navigation lives in the bottom bar. */}
+                <div className="flex items-center gap-2 md:hidden">
+                    <Link href="/" aria-label="Beranda" className={`flex size-10 items-center justify-center rounded-base border-2 border-border ${pathname === "/" ? "bg-main shadow-shadow" : "bg-background"}`}>
+                        <Home className="size-4" />
+                    </Link>
+                    <Link href="/about" aria-label="Tentang" className={`flex size-10 items-center justify-center rounded-base border-2 border-border ${pathname === "/about" ? "bg-main shadow-shadow" : "bg-background"}`}>
+                        <UserRound className="size-4" />
+                    </Link>
+                </div>
                 <Button
                     variant="neutral"
-                    className="md:hidden size-9 p-0 bg-secondary-background text-foreground flex items-center justify-center shadow-none hover:shadow-none hover:translate-x-0 hover:translate-y-0 relative"
+                    className="relative hidden size-10 shrink-0 p-0 bg-secondary-background text-foreground items-center justify-center shadow-none hover:shadow-none hover:translate-x-0 hover:translate-y-0 md:hidden"
                     onClick={() => setOpen((prev) => !prev)}
-                    aria-label="Toggle menu"
+                    aria-expanded={open}
+                    aria-controls="mobile-navigation"
+                    aria-label={open ? "Tutup menu" : "Buka menu"}
                 >
                     <AnimatePresence mode="wait" initial={false}>
                         {open ? (
@@ -113,7 +138,7 @@ export default function Navbar() {
                 </Button>
             </div>
 
-            {/* Animated Mobile Menu */}
+            {/* Desktop-only mobile menu remains hidden; bottom navigation is direct-access. */}
             <AnimatePresence>
                 {open && (
                     <motion.div
@@ -121,7 +146,8 @@ export default function Navbar() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                        className="border-t-2 border-border bg-secondary-background px-4 pb-4 pt-3 overflow-hidden md:hidden"
+                        id="mobile-navigation"
+                        className="hidden border-t-2 border-border bg-secondary-background px-4 pb-4 pt-3 overflow-hidden md:hidden"
                     >
                         <nav className="flex flex-col gap-2">
                             {navLinks.map((link, idx) => (

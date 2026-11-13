@@ -7,7 +7,7 @@ export default function Home() {
     const categoryCount = new Set(projects.map((p) => p.category)).size
 
     return (
-        <div className="min-h-[100dvh] flex flex-col bg-background bg-grid-pattern">
+        <div className="min-h-[100dvh] flex flex-col">
             <main className="flex-1">
                 {/* ── Hero ── */}
                 <section className="bg-transparent">

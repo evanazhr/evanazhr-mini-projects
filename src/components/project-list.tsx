@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Search, FolderOpen } from "lucide-react"
 import ProjectCard from "@/components/project-card"
 import { Input } from "@/components/ui/input"
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/pagination"
 import type { Project } from "@/types/project.type"
 
-const ITEMS_PER_PAGE = 10
+const PAGE_SIZE_OPTIONS = [6, 12, 24, 48]
 
 type Props = {
     projects: Project[]
@@ -30,6 +30,7 @@ export default function ProjectList({ projects }: Props) {
     const [search, setSearch] = useState("")
     const [activeCategory, setActiveCategory] = useState("Semua")
     const [currentPage, setCurrentPage] = useState(1)
+    const [itemsPerPage, setItemsPerPage] = useState(12)
 
     const filtered = useMemo(() => {
         return projects.filter((p) => {
@@ -41,12 +42,16 @@ export default function ProjectList({ projects }: Props) {
         })
     }, [search, activeCategory, projects])
 
-    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE)
+    const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage))
+
+    useEffect(() => {
+        setCurrentPage((page) => Math.min(page, totalPages))
+    }, [totalPages])
 
     const paginatedProjects = useMemo(() => {
-        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
-        return filtered.slice(startIndex, startIndex + ITEMS_PER_PAGE)
-    }, [filtered, currentPage])
+        const startIndex = (currentPage - 1) * itemsPerPage
+        return filtered.slice(startIndex, startIndex + itemsPerPage)
+    }, [filtered, currentPage, itemsPerPage])
 
     return (
         <>
@@ -106,14 +111,41 @@ export default function ProjectList({ projects }: Props) {
                     </div>
                 ) : (
                     <>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300">
                             {paginatedProjects.map((project) => (
                                 <ProjectCard key={project.href} project={project} />
                             ))}
                         </div>
 
+                        <div className="mt-10 flex flex-col gap-4 border-t-2 border-border/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                            <label className="flex items-center gap-3 text-sm font-bold">
+                                Tampilkan
+                                <Select
+                                    value={String(itemsPerPage)}
+                                    onValueChange={(value) => {
+                                        setItemsPerPage(Number(value))
+                                        setCurrentPage(1)
+                                    }}
+                                >
+                                    <SelectTrigger className="h-10 w-[150px] bg-secondary-background text-foreground border-2 border-border shadow-shadow font-bold">
+                                        <SelectValue placeholder="Jumlah project" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-secondary-background text-foreground border-2 border-border">
+                                        {PAGE_SIZE_OPTIONS.map((size) => (
+                                            <SelectItem key={size} value={String(size)} className="hover:bg-main/20">
+                                                {size} project / halaman
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </label>
+                            <span className="text-sm font-medium text-foreground/70">
+                                Halaman {currentPage} dari {totalPages}
+                            </span>
+                        </div>
+
                         {totalPages > 1 && (
-                            <div className="mt-10">
+                            <div className="mt-5">
                                 <Pagination>
                                     <PaginationContent>
                                         <PaginationItem>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import MobileBottomNavigation from "@/components/mobile-bottom-navigation";
 import Footer from "@/components/footer";
 import PWARegister from "@/components/pwa-register";
 
@@ -44,11 +45,12 @@ export default function RootLayout({
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-grid-pattern">
         <PWARegister />
         <Navbar />
         {children}
         <Footer />
+        <MobileBottomNavigation />
       </body>
     </html>
   );
