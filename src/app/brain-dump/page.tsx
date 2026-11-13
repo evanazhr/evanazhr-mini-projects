@@ -186,7 +186,7 @@ export default function BrainDump() {
 
       {/* Input Area */}
       <div className="mx-auto w-[calc(100%-2rem)] max-w-5xl px-0 mb-6">
-        <div className="bg-secondary-background border-2 border-border rounded-base shadow-shadow p-5">
+        <div className="bg-secondary-background border-2 border-border rounded-none shadow-shadow p-5">
           {/* Header row */}
           <div className="flex items-center gap-2 mb-4">
             <Brain className="size-5 text-foreground shrink-0" />
@@ -202,7 +202,7 @@ export default function BrainDump() {
             onKeyDown={handleKeyDown}
             placeholder="Tulis apa saja yang ada di pikiranmu..."
             rows={4}
-            className="w-full resize-none rounded-base border-2 border-border bg-background px-4 py-3 text-sm font-base text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition-shadow"
+            className="w-full resize-none rounded-none border-2 border-border bg-background px-4 py-3 text-sm font-base text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition-shadow"
           />
 
           {/* Controls Row */}
@@ -237,7 +237,7 @@ export default function BrainDump() {
                     key={idx}
                     onClick={() => setSelectedColor(idx)}
                     title={`Warna ${idx + 1}`}
-                    className={`size-6 rounded-sm border-2 transition-transform ${color.bg} ${selectedColor === idx
+                    className={`size-6 rounded-none border-2 transition-transform ${color.bg} ${selectedColor === idx
                       ? 'border-black scale-110 shadow-[2px_2px_0px_#000]'
                       : 'border-border hover:scale-105'
                       }`}
@@ -302,7 +302,7 @@ export default function BrainDump() {
         {notes.length === 0 ? (
           // Empty state
           <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <div className="size-16 rounded-base border-2 border-border bg-secondary-background shadow-shadow flex items-center justify-center">
+            <div className="size-16 rounded-none border-2 border-border bg-secondary-background shadow-shadow flex items-center justify-center">
               <Brain className="size-8 text-foreground/40" />
             </div>
             <div className="text-center">
@@ -326,7 +326,7 @@ export default function BrainDump() {
                 <div
                   key={note.id}
                   id={`note-${note.id}`}
-                  className={`break-inside-avoid rounded-base border-2 border-border shadow-shadow flex flex-col transition-all duration-300 overflow-hidden ${colorBg} ${isDeleting ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100'
+                  className={`break-inside-avoid rounded-none border-2 border-border shadow-shadow flex flex-col transition-all duration-300 overflow-hidden ${colorBg} ${isDeleting ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100'
                     }`}
                 >
                   {/* Note content */}
@@ -365,7 +365,7 @@ export default function BrainDump() {
                     <button
                       onClick={() => deleteNote(note.id)}
                       aria-label="Hapus catatan"
-                      className="size-7 flex items-center justify-center rounded-sm border-2 border-transparent hover:border-border hover:bg-black/10 transition-all"
+                      className="size-7 flex items-center justify-center rounded-none border-2 border-transparent hover:border-border hover:bg-black/10 transition-all"
                     >
                       <Trash2 className="size-3.5 text-foreground/50 hover:text-[#FF5252] transition-colors" />
                     </button>

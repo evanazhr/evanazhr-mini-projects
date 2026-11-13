@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     default: "evanazhr.mini.projects",
   },
   description: "Kumpulan mini project interaktif yang dibuat oleh evanazhr untuk belajar dan bereksperimen.",
+  icons: {
+    icon: "/Project, Tools, and Utility.png",
+    shortcut: "/Project, Tools, and Utility.png",
+    apple: "/Project, Tools, and Utility.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -49,8 +54,8 @@ export default function RootLayout({
         <PWARegister />
         <Navbar />
         {children}
-        <Footer />
-        <MobileBottomNavigation />
+        <MobileBottomNavigation/>
+        <Footer/>
       </body>
     </html>
   );

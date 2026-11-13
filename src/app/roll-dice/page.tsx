@@ -38,12 +38,12 @@ function DiceFace({ value, size = "large" }: { value: number; size?: "large" | "
 
   return (
     <div 
-      className={`${boxClass} border-border bg-secondary-background rounded-base grid grid-cols-3 grid-rows-3 gap-0.5 justify-items-center items-center shrink-0 select-none`}
+      className={`${boxClass} border-border bg-secondary-background rounded-none grid grid-cols-3 grid-rows-3 gap-0.5 justify-items-center items-center shrink-0 select-none`}
     >
       {dots.map((dot, idx) => (
         <div 
           key={idx}
-          className={`${dotClass} bg-foreground rounded-full`}
+          className={`${dotClass} bg-foreground rounded-none`}
           style={{ gridRowStart: dot.r, gridColumnStart: dot.c }}
         />
       ))}
@@ -183,7 +183,7 @@ export default function RollDice() {
                         : "0"
 
                       return (
-                        <div key={num} className="border-2 border-border bg-secondary-background p-2.5 flex flex-col items-center shadow-shadow rounded-base">
+                        <div key={num} className="border-2 border-border bg-secondary-background p-2.5 flex flex-col items-center shadow-shadow rounded-none">
                           <span className="text-xs font-black text-foreground/70">Dadu {num}</span>
                           <span className="text-xl font-black text-foreground mt-1">{count}</span>
                           <span className="text-[10px] font-bold text-foreground/60 mt-0.5">{percent}%</span>
@@ -192,7 +192,7 @@ export default function RollDice() {
                     })}
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 bg-main/10 border-2 border-border p-4 text-center rounded-base">
+                  <div className="grid grid-cols-3 gap-2 bg-main/10 border-2 border-border p-4 text-center rounded-none">
                     <div className="flex flex-col items-center justify-center">
                       <span className="text-xs font-bold text-foreground/70 uppercase tracking-wider">Total Lemparan</span>
                       <span className="text-lg sm:text-xl font-black text-foreground mt-0.5">{rollHistory.length} Kali</span>
@@ -222,7 +222,7 @@ export default function RollDice() {
 
                 <CardContent className="p-5 flex-1 overflow-y-auto max-h-[460px] flex flex-col gap-4">
                   {rollHistory.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-20 text-center gap-2 border-2 border-dashed border-border/20 p-5 rounded-base">
+                    <div className="flex flex-col items-center justify-center py-20 text-center gap-2 border-2 border-dashed border-border/20 p-5 rounded-none">
                       <HelpCircle className="size-8 text-foreground/40" />
                       <p className="text-sm font-bold text-foreground">Belum ada riwayat</p>
                       <p className="text-xs text-foreground/60">Silakan lempar dadu untuk memulai pencatatan.</p>
@@ -232,7 +232,7 @@ export default function RollDice() {
                       {rollHistory.map((val, idx) => (
                         <div 
                           key={idx}
-                          className="flex flex-col items-center gap-1.5 p-2 bg-background border-2 border-border rounded-base shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all"
+                          className="flex flex-col items-center gap-1.5 p-2 bg-background border-2 border-border rounded-none shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all"
                         >
                           <span className="text-[10px] font-black text-foreground/70 select-none">#{rollHistory.length - idx}</span>
                           <DiceFace value={val} size="small" />

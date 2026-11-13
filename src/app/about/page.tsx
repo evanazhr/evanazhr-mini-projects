@@ -62,7 +62,7 @@ export default function About() {
                                 <CardContent className="p-6 flex flex-col gap-6">
                                     {/* Header Badge */}
                                     <div className="flex items-center justify-between">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-3 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-3 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                                             <Code2 className="size-3.5 text-white" />
                                             <span>Siapa Saya</span>
                                         </div>
@@ -74,9 +74,9 @@ export default function About() {
 
                                     {/* Profile Info */}
                                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                                        <div className="relative size-16 border-2 border-border bg-main flex items-center justify-center shadow-shadow rounded-base shrink-0 transition-transform hover:scale-105">
+                                        <div className="relative size-16 border-2 border-border bg-main flex items-center justify-center shadow-shadow rounded-none shrink-0 transition-transform hover:scale-105">
                                             <span className="text-2xl font-black text-main-foreground select-none">E</span>
-                                            <div className="absolute -bottom-1 -right-1 size-5 bg-chart-4 border-2 border-border rounded-full flex items-center justify-center shadow-[1px_1px_0px_var(--border)]">
+                                            <div className="absolute -bottom-1 -right-1 size-5 bg-chart-4 border-2 border-border rounded-none flex items-center justify-center shadow-[1px_1px_0px_var(--border)]">
                                                 <span className="text-[9px] font-black text-black">👋</span>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@ export default function About() {
                                     </p>
 
                                     {/* Highlights */}
-                                    <div className="border-2 border-border bg-background p-4 rounded-base">
+                                    <div className="border-2 border-border bg-background p-4 rounded-none">
                                         <h3 className="text-xs font-black uppercase tracking-wider text-foreground/60 mb-3">Fokus & Pendekatan di website ini</h3>
                                         <ul className="grid gap-2.5 sm:grid-cols-2">
                                             {
@@ -120,7 +120,7 @@ export default function About() {
                                 <CardContent className="p-6 flex flex-col gap-6">
                                     {/* Header Badge */}
                                     <div className="flex items-center justify-between">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-5 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-5 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                                             <Layers className="size-3.5 text-white" />
                                             <span>Tentang Proyek</span>
                                         </div>
@@ -132,15 +132,15 @@ export default function About() {
 
                                     {/* Stats Grid */}
                                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                                        <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
+                                        <div className="border-2 border-border bg-background p-3 rounded-none shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Total Project</p>
                                             <p className="text-2xl font-black text-foreground mt-1">{projects.length}</p>
                                         </div>
-                                        <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
+                                        <div className="border-2 border-border bg-background p-3 rounded-none shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Total Kategori</p>
                                             <p className="text-2xl font-black text-foreground mt-2">{categoryCount}</p>
                                         </div>
-                                        <div className="border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
+                                        <div className="border-2 border-border bg-background p-3 rounded-none shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150">
                                             <p className="text-[10px] font-bold text-foreground/50 uppercase tracking-wider">Status</p>
                                             <p className="text-sm font-black text-chart-4 mt-2">Aktif</p>
                                         </div>
@@ -158,7 +158,7 @@ export default function About() {
                                 <CardContent className="p-6 flex flex-col gap-6">
                                     {/* Header Badge */}
                                     <div className="flex items-center justify-between">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-main text-main-foreground border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-main text-main-foreground border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                                             <Wrench className="size-3.5 text-main-foreground" />
                                             <span>Tech Stack</span>
                                         </div>
@@ -169,13 +169,13 @@ export default function About() {
                                         {techStack.map((tech) => (
                                             <div
                                                 key={tech.name}
-                                                className="flex items-center justify-between border-2 border-border bg-background p-3 rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150"
+                                                className="flex items-center justify-between border-2 border-border bg-background p-3 rounded-none shadow-[2px_2px_0px_var(--border)] hover:translate-y-[-2px] transition-transform duration-150"
                                             >
                                                 <div className="flex items-center gap-2">
-                                                    <span className="size-2 rounded-full bg-main" />
+                                                    <span className="size-2 rounded-none bg-main" />
                                                     <span className="text-sm font-black text-foreground">{tech.name}</span>
                                                 </div>
-                                                <span className="text-[10px] font-bold text-foreground/60 border border-border/20 px-1.5 py-0.5 rounded-base bg-secondary-background">
+                                                <span className="text-[10px] font-bold text-foreground/60 border border-border/20 px-1.5 py-0.5 rounded-none bg-secondary-background">
                                                     {tech.category}
                                                 </span>
                                             </div>
@@ -189,7 +189,7 @@ export default function About() {
                                 <CardContent className="p-6 flex flex-col gap-6">
                                     {/* Header Badge */}
                                     <div className="flex items-center justify-between">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-foreground text-background border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-foreground text-background border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                                             <Globe className="size-3.5 text-background" />
                                             <span>Links & Kontak</span>
                                         </div>
@@ -203,9 +203,9 @@ export default function About() {
                                                 href={link.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center gap-3 border-2 border-border bg-background p-3 rounded-base shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all duration-150 group"
+                                                className="flex items-center gap-3 border-2 border-border bg-background p-3 rounded-none shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all duration-150 group"
                                             >
-                                                <div className={`border-2 border-border ${link.color} p-2 rounded-base shrink-0 group-hover:scale-105 transition-transform duration-150`}>
+                                                <div className={`border-2 border-border ${link.color} p-2 rounded-none shrink-0 group-hover:scale-105 transition-transform duration-150`}>
                                                     <link.icon className="size-4" />
                                                 </div>
                                                 <div className="min-w-0">

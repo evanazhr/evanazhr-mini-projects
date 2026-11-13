@@ -46,7 +46,7 @@ export default function Navbar() {
     return (
         <header
             ref={navRef}
-            className="hidden md:block fixed left-2 right-2 z-[100] mx-auto w-[calc(100%-1rem)] max-w-5xl rounded-base border-2 border-border bg-secondary-background shadow-shadow md:fixed md:inset-x-0 md:bottom-auto md:left-0 md:right-0 md:top-4 md:my-0 md:w-[calc(100%-2rem)] md:overflow-hidden"
+            className="hidden md:block fixed left-2 right-2 z-[100] mx-auto w-[calc(100%-1rem)] max-w-5xl rounded-none border-2 border-border bg-secondary-background shadow-shadow md:fixed md:inset-x-0 md:bottom-auto md:left-0 md:right-0 md:top-4 md:my-0 md:w-[calc(100%-2rem)] md:overflow-hidden"
         >
             <div className="flex min-h-14 items-center justify-between px-3 pb-[env(safe-area-inset-bottom)] sm:px-4 md:px-6 md:pb-0">
                 {/* Logo */}
@@ -55,9 +55,7 @@ export default function Navbar() {
                     aria-label="Kembali ke beranda"
                     className="flex min-w-0 items-center gap-2 truncate text-base font-black tracking-tight text-foreground transition-opacity hover:opacity-90 sm:text-lg"
                 >              
-                    <span className="flex size-9 shrink-0 items-center justify-center border-2 border-border bg-main text-sm font-black shadow-[2px_2px_0_var(--border)]" aria-hidden="true">
-                        MP
-                    </span>
+                    <img src="/Project, Tools, and Utility.png" alt="" className="size-9 shrink-0 object-cover" aria-hidden="true" />
                     <span className="truncate">mini projects</span>
                 </Link>
 
@@ -97,10 +95,10 @@ export default function Navbar() {
 
                 {/* Mobile keeps a compact brand row; navigation lives in the bottom bar. */}
                 <div className="flex items-center gap-2 md:hidden">
-                    <Link href="/" aria-label="Beranda" className={`flex size-10 items-center justify-center rounded-base border-2 border-border ${pathname === "/" ? "bg-main shadow-shadow" : "bg-background"}`}>
+                    <Link href="/" aria-label="Beranda" className={`flex size-10 items-center justify-center rounded-none border-2 border-border ${pathname === "/" ? "bg-main shadow-shadow" : "bg-background"}`}>
                         <Home className="size-4" />
                     </Link>
-                    <Link href="/about" aria-label="Tentang" className={`flex size-10 items-center justify-center rounded-base border-2 border-border ${pathname === "/about" ? "bg-main shadow-shadow" : "bg-background"}`}>
+                    <Link href="/about" aria-label="Tentang" className={`flex size-10 items-center justify-center rounded-none border-2 border-border ${pathname === "/about" ? "bg-main shadow-shadow" : "bg-background"}`}>
                         <UserRound className="size-4" />
                     </Link>
                 </div>

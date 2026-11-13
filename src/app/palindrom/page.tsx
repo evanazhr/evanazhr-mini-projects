@@ -89,7 +89,7 @@ export default function Palindrom() {
                             {/* Result */}
                             {result && (
                                 <div
-                                    className={`flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-base shadow-shadow ${
+                                    className={`flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-none shadow-shadow ${
                                         result.isPalindrom ? "bg-main text-main-foreground" : "bg-chart-3/20 text-foreground"
                                     }`}
                                 >
@@ -104,7 +104,7 @@ export default function Palindrom() {
                         </Card>
 
                         {/* Info box */}
-                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-none shadow-shadow">
                             <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">Apa itu palindrom?</p>
                             <p className="text-sm font-medium text-foreground/80 leading-relaxed">
                                 Palindrom adalah kata atau kalimat yang jika dibaca dari depan dan belakang menghasilkan urutan yang sama.

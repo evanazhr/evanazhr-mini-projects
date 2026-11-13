@@ -221,7 +221,7 @@ export default function InterpolasiLinier() {
                             {/* Result display */}
                             {f1x !== null && (
                                 <div 
-                                    className="flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-base shadow-shadow text-foreground"
+                                    className="flex items-start gap-3 p-4 mx-5 mb-5 border-2 border-border rounded-none shadow-shadow text-foreground"
                                     style={{ backgroundColor: 'color-mix(in srgb, var(--page-accent) 15%, var(--main) 85%)' }}
                                 >
                                     <Calculator className="mt-0.5 size-5 shrink-0 text-foreground" />
@@ -241,7 +241,7 @@ export default function InterpolasiLinier() {
                         </Card>
 
                         {/* Info box */}
-                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+                        <div className="flex flex-col gap-2 p-4 mt-6 border-2 border-border bg-secondary-background rounded-none shadow-shadow">
                             <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
                                 Apa itu Interpolasi Linear?
                             </p>

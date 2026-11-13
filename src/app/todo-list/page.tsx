@@ -205,7 +205,7 @@ export default function TodoList() {
                 </div>
               ) : tasks.length === 0 ? (
                 // Empty state
-                <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-border rounded-base bg-secondary-background text-center">
+                <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-border rounded-none bg-secondary-background text-center">
                   <ListTodo className="size-10 mx-auto text-foreground/40 mb-3 animate-pulse" />
                   <p className="text-sm font-bold text-foreground">Belum ada tugas harian</p>
                   <p className="text-xs text-foreground/60 mt-1">Silakan tambahkan tugas baru menggunakan kolom di atas.</p>
@@ -219,7 +219,7 @@ export default function TodoList() {
                     return (
                       <li 
                         key={index} 
-                        className={`flex items-start justify-between p-4 bg-secondary-background border-2 border-border rounded-base shadow-shadow transition-all duration-150 gap-3 ${
+                        className={`flex items-start justify-between p-4 bg-secondary-background border-2 border-border rounded-none shadow-shadow transition-all duration-150 gap-3 ${
                           task.completed ? 'opacity-85' : ''
                         }`}
                       >
@@ -230,7 +230,7 @@ export default function TodoList() {
                             type="button"
                             onClick={() => handleToggleTask(index)}
                             variant={task.completed ? "default" : "neutral"}
-                            className="size-6 p-0 shrink-0 border-2 border-border rounded-base hover:translate-y-0 hover:translate-x-0 shadow-none hover:shadow-none"
+                            className="size-6 p-0 shrink-0 border-2 border-border rounded-none hover:translate-y-0 hover:translate-x-0 shadow-none hover:shadow-none"
                             aria-label={task.completed ? "Tandai belum selesai" : "Tandai selesai"}
                           >
                             {task.completed && <Check className="size-4 stroke-[3px] text-main-foreground" />}
@@ -336,7 +336,7 @@ export default function TodoList() {
             </div>
 
             {/* Info Box */}
-            <div className="flex flex-col gap-2 p-4 mt-8 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+            <div className="flex flex-col gap-2 p-4 mt-8 border-2 border-border bg-secondary-background rounded-none shadow-shadow">
               <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
                 Tips Penggunaan
               </p>

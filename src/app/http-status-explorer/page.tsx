@@ -54,7 +54,7 @@ export default function HttpStatusExplorer() {
     <div className="min-h-[100dvh] bg-background bg-grid-pattern">
       <PageHeader {...meta} />
       <main className="mx-auto max-w-5xl px-4 pb-12 md:px-8">
-        <section className="mb-5 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow">
+        <section className="mb-5 rounded-none border-2 border-border bg-secondary-background p-4 shadow-shadow">
           <form
             onSubmit={(event) => {
               event.preventDefault()
@@ -68,12 +68,12 @@ export default function HttpStatusExplorer() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Contoh: 404, not found, redirect..."
-                className="mt-2 h-11 w-full rounded-base border-2 border-border bg-background px-3 font-normal"
+                className="mt-2 h-11 w-full rounded-none border-2 border-border bg-background px-3 font-normal"
               />
             </label>
             <button
               type="submit"
-              className="h-11 rounded-base border-2 border-border bg-main px-5 font-bold shadow-shadow"
+              className="h-11 rounded-none border-2 border-border bg-main px-5 font-bold shadow-shadow"
             >
               Search
             </button>
@@ -85,7 +85,7 @@ export default function HttpStatusExplorer() {
                 key={item}
                 type="button"
                 onClick={() => setGroup(item)}
-                className={`rounded-base border-2 border-border px-3 py-2 text-sm font-bold ${
+                className={`rounded-none border-2 border-border px-3 py-2 text-sm font-bold ${
                   group === item ? "bg-main shadow-shadow" : "bg-background"
                 }`}
               >
@@ -103,7 +103,7 @@ export default function HttpStatusExplorer() {
         {filtered.length > 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
             {filtered.map(([code, name, description, example]) => (
-              <article key={code} className="rounded-base border-2 border-border bg-secondary-background p-5 shadow-shadow">
+              <article key={code} className="rounded-none border-2 border-border bg-secondary-background p-5 shadow-shadow">
                 <div className="flex items-baseline gap-3">
                   <strong className="text-3xl">{code}</strong>
                   <h2 className="text-xl font-black">{name}</h2>
@@ -114,7 +114,7 @@ export default function HttpStatusExplorer() {
             ))}
           </div>
         ) : (
-          <div className="rounded-base border-2 border-dashed border-border bg-secondary-background p-8 text-center">
+          <div className="rounded-none border-2 border-dashed border-border bg-secondary-background p-8 text-center">
             <h2 className="text-xl font-black">Status tidak ditemukan</h2>
             <p className="mt-2 text-foreground/70">Coba cari dengan kode seperti 404 atau kata seperti “unauthorized”.</p>
             <button
@@ -124,7 +124,7 @@ export default function HttpStatusExplorer() {
                 setSearch("")
                 setGroup("all")
               }}
-              className="mt-5 rounded-base border-2 border-border bg-main px-4 py-2 font-bold shadow-shadow"
+              className="mt-5 rounded-none border-2 border-border bg-main px-4 py-2 font-bold shadow-shadow"
             >
               Reset filter
             </button>

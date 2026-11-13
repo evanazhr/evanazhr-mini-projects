@@ -78,7 +78,7 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
                 </button>
 
                 {showDetails && (
-                  <div className="mt-2 bg-chart-3/5 border-2 border-border p-3 rounded-base overflow-auto max-h-40">
+                  <div className="mt-2 bg-chart-3/5 border-2 border-border p-3 rounded-none overflow-auto max-h-40">
                     <p className="text-xs font-mono text-chart-3 break-all leading-relaxed whitespace-pre-wrap">
                       {error.message || "Unknown error"}
                     </p>

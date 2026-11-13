@@ -140,7 +140,7 @@ export default function MonoalphabeticCipher() {
                     Tabel Pemetaan Abjad (Alphabet Mapping Table)
                   </span>
                   
-                  <div className="overflow-x-auto border-2 border-border rounded-base shadow-shadow">
+                  <div className="overflow-x-auto border-2 border-border rounded-none shadow-shadow">
                     <table className="w-full border-collapse text-center text-xs font-black min-w-[700px]">
                       <thead>
                         <tr className="bg-main border-b-2 border-border">
@@ -192,7 +192,7 @@ export default function MonoalphabeticCipher() {
               <CardContent className="p-5 flex flex-col gap-6">
                 
                 {/* Mode Selector Tabs */}
-                <div className="flex border-2 border-border rounded-base shadow-shadow overflow-hidden">
+                <div className="flex border-2 border-border rounded-none shadow-shadow overflow-hidden">
                   <button
                     type="button"
                     onClick={() => setMode("encrypt")}
@@ -230,7 +230,7 @@ export default function MonoalphabeticCipher() {
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
                       placeholder={mode === "encrypt" ? "Ketik pesan rahasia yang ingin dienkripsi..." : "Ketik sandi rahasia yang ingin didekripsi..."}
-                      className="w-full p-3 font-medium text-sm text-foreground bg-secondary-background border-2 border-border rounded-base outline-none focus-visible:bg-secondary-background focus-visible:shadow-[4px_4px_0px_var(--page-accent)] transition-all resize-none"
+                      className="w-full p-3 font-medium text-sm text-foreground bg-secondary-background border-2 border-border rounded-none outline-none focus-visible:bg-secondary-background focus-visible:shadow-[4px_4px_0px_var(--page-accent)] transition-all resize-none"
                     />
                   </div>
 
@@ -267,7 +267,7 @@ export default function MonoalphabeticCipher() {
                       value={outputText}
                       readOnly
                       placeholder="Hasil akan muncul di sini secara otomatis..."
-                      className="w-full p-3 font-black text-sm text-foreground bg-main/5 border-2 border-border rounded-base outline-none resize-none select-all"
+                      className="w-full p-3 font-black text-sm text-foreground bg-main/5 border-2 border-border rounded-none outline-none resize-none select-all"
                     />
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function MonoalphabeticCipher() {
             </Card>
 
             {/* Info Box */}
-            <div className="flex flex-col gap-2 p-4 border-2 border-border bg-secondary-background rounded-base shadow-shadow">
+            <div className="flex flex-col gap-2 p-4 border-2 border-border bg-secondary-background rounded-none shadow-shadow">
               <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2 flex items-center gap-1.5">
                 <AlertCircle className="size-4 shrink-0" />
                 Cara Kerja Sandi Substitusi Monoalfabetik

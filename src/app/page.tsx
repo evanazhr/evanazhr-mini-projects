@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { getProjects } from "@/lib/get-projects"
 import ProjectList from "@/components/project-list"
 import { Card, CardContent } from "@/components/ui/card"
@@ -11,22 +12,35 @@ export default function Home() {
             <main className="flex-1">
                 {/* ── Hero ── */}
                 <section className="bg-transparent">
-                    <div className="mx-auto max-w-5xl text-center px-4 py-14 md:px-8 md:py-20 xl:px-16">
-                        <div className="mb-5 inline-flex items-center border-2 border-border bg-main px-3 py-1 shadow-shadow">
-                            <span className="text-xs font-bold uppercase tracking-widest text-main-foreground">
-                                Project, Tools, and Utility
+                    <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 py-10 md:grid-cols-[1.05fr_.95fr] md:px-8 md:py-16 xl:px-16">
+                        <div className="text-left">
+                            <div className="mb-5 inline-flex items-center border-2 border-border bg-main px-3 py-1 shadow-shadow">
+                                <span className="text-xs font-bold tracking-wider text-main-foreground">
+                                    Project, tools, dan utility
+                                </span>
+                            </div>
+                            <h1 className="mb-4 max-w-xl text-[clamp(2.5rem,8vw,4.8rem)] font-black leading-[.92] tracking-[-0.06em] text-foreground">
+                                Hal kecil yang<br />bisa dipakai.
+                            </h1>
+                            <p className="max-w-lg text-base font-medium leading-7 text-foreground/80 md:text-lg">
+                                Kumpulan mini project untuk belajar, bereksperimen, dan membantu menyelesaikan masalah sehari-hari.
+                            </p>
+                        </div>
+                        <div className="relative border-2 border-border bg-main p-2 shadow-shadow">
+                            <Image
+                                src="/Project, Tools, and Utility.png"
+                                alt="Ilustrasi kumpulan project, tools, dan utility"
+                                width={790}
+                                height={595}
+                                priority
+                                className="h-auto w-full object-cover"
+                            />
+                            <span className="absolute -bottom-3 -left-3 border-2 border-border bg-secondary-background px-3 py-2 text-xs font-black shadow-shadow">
+                                by : evanazhr
                             </span>
                         </div>
 
-                        <h1 className="mb-4 text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tight text-foreground">
-                            Mini Projects
-                        </h1>
-                        <p className="max-w-lg text-base w-full mx-auto font-medium text-foreground/80 md:text-lg" style={{ lineHeight: "1.6" }}>
-                            Kumpulan mini project yang saya buat untuk belajar, bereksperimen, dan digunakan sebagai tools untuk menyelesaikan suatu masalah.
-                            Setiap project fokus pada satu konsep kecil yang menarik.
-                        </p>
-
-                        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                        <div className="flex flex-wrap items-center gap-3 md:col-span-2">
                             <Card className="bg-white">
                                 <CardContent>
                                     <span className="text-2xl font-black text-foreground">{projects.length}</span>

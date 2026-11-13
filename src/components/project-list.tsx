@@ -103,7 +103,7 @@ export default function ProjectList({ projects }: Props) {
             <section className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
                 {filtered.length === 0 ? (
                     <div className="flex flex-col items-center gap-4 py-20 text-center">
-                        <div className="border-2 border-border bg-main p-5 shadow-shadow rounded-base">
+                        <div className="border-2 border-border bg-main p-5 shadow-shadow rounded-none">
                             <FolderOpen className="size-10 text-main-foreground" />
                         </div>
                         <p className="text-lg font-black text-foreground">Tidak ada project ditemukan</p>

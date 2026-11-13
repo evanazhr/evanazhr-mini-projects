@@ -133,7 +133,7 @@ export default function QRCodeGenerator() {
                 <CardContent className="p-6 flex flex-col gap-6">
                   {/* Header Badge */}
                   <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-4 text-black border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-4 text-black border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                       <FileText className="size-3.5" />
                       <span>Input Data</span>
                     </div>
@@ -178,7 +178,7 @@ export default function QRCodeGenerator() {
                 <CardContent className="p-6 flex flex-col gap-6">
                   {/* Header Badge */}
                   <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-2 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-2 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                       <Settings className="size-3.5" />
                       <span>Pengaturan Desain</span>
                     </div>
@@ -198,7 +198,7 @@ export default function QRCodeGenerator() {
                             onClick={() => setFgColor(color.hex)}
                             style={{ backgroundColor: color.hex }}
                             title={color.name}
-                            className={`size-8 rounded-base border-2 border-border shadow-[1px_1px_0px_var(--border)] transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer ${
+                            className={`size-8 rounded-none border-2 border-border shadow-[1px_1px_0px_var(--border)] transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer ${
                               isFgPresetActive(color.hex) 
                                 ? "ring-2 ring-offset-2 ring-foreground scale-105" 
                                 : ""
@@ -215,7 +215,7 @@ export default function QRCodeGenerator() {
                         ))}
                         
                         {/* Custom Color Picker */}
-                        <div className="relative size-8 rounded-base border-2 border-border bg-background shadow-[1px_1px_0px_var(--border)] flex items-center justify-center overflow-hidden cursor-pointer">
+                        <div className="relative size-8 rounded-none border-2 border-border bg-background shadow-[1px_1px_0px_var(--border)] flex items-center justify-center overflow-hidden cursor-pointer">
                           <input
                             type="color"
                             value={fgColor.startsWith("#ffffff00") ? "#000000" : fgColor}
@@ -250,7 +250,7 @@ export default function QRCodeGenerator() {
                               backgroundPosition: "0 0, 0 4px, 4px -4px, -4px 0"
                             }}
                             title={color.name}
-                            className={`size-8 rounded-base border-2 border-border shadow-[1px_1px_0px_var(--border)] transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer ${
+                            className={`size-8 rounded-none border-2 border-border shadow-[1px_1px_0px_var(--border)] transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer ${
                               isBgPresetActive(color.hex) 
                                 ? "ring-2 ring-offset-2 ring-foreground scale-105" 
                                 : ""
@@ -267,7 +267,7 @@ export default function QRCodeGenerator() {
                         ))}
                         
                         {/* Custom Color Picker */}
-                        <div className="relative size-8 rounded-base border-2 border-border bg-background shadow-[1px_1px_0px_var(--border)] flex items-center justify-center overflow-hidden cursor-pointer">
+                        <div className="relative size-8 rounded-none border-2 border-border bg-background shadow-[1px_1px_0px_var(--border)] flex items-center justify-center overflow-hidden cursor-pointer">
                           <input
                             type="color"
                             value={bgColor.endsWith("00") ? "#ffffff" : bgColor}
@@ -314,7 +314,7 @@ export default function QRCodeGenerator() {
                               key={level}
                               type="button"
                               onClick={() => setErrorCorrectionLevel(level)}
-                              className={`py-2 text-xs font-black rounded-base border-2 border-border shadow-[2px_2px_0px_var(--border)] active:translate-y-0 active:shadow-none transition-all cursor-pointer ${
+                              className={`py-2 text-xs font-black rounded-none border-2 border-border shadow-[2px_2px_0px_var(--border)] active:translate-y-0 active:shadow-none transition-all cursor-pointer ${
                                 active 
                                   ? "bg-main text-main-foreground -translate-y-0.5" 
                                   : "bg-background text-foreground hover:bg-foreground/5"
@@ -333,7 +333,7 @@ export default function QRCodeGenerator() {
                   </div>
                   
                   {/* Warning on low contrast */}
-                  <div className="flex items-start gap-2.5 bg-background border-2 border-border p-3.5 rounded-base">
+                  <div className="flex items-start gap-2.5 bg-background border-2 border-border p-3.5 rounded-none">
                     <Info className="size-4 text-chart-5 shrink-0 mt-0.5" />
                     <div className="text-xs font-semibold text-foreground/80 leading-relaxed">
                       <span className="font-black text-foreground">Tips Kontras:</span> Pastikan warna utama (Foreground) jauh lebih gelap dibandingkan warna latar belakang (Background) agar kode QR dapat dipindai dengan mudah oleh kamera ponsel pintar.
@@ -352,14 +352,14 @@ export default function QRCodeGenerator() {
                 <CardContent className="p-6 flex flex-col gap-6 items-center">
                   {/* Header Badge */}
                   <div className="w-full flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-3 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-base shadow-[2px_2px_0px_0px_var(--border)]">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-chart-3 text-white border-2 border-border font-bold text-xs uppercase tracking-widest rounded-none shadow-[2px_2px_0px_0px_var(--border)]">
                       <Sparkles className="size-3.5 text-white" />
                       <span>Live Preview</span>
                     </div>
                   </div>
 
                   {/* QR Image Display */}
-                  <div className="w-full aspect-square border-2 border-border bg-background rounded-base shadow-[4px_4px_0px_var(--border)] flex items-center justify-center p-6 relative overflow-hidden group">
+                  <div className="w-full aspect-square border-2 border-border bg-background rounded-none shadow-[4px_4px_0px_var(--border)] flex items-center justify-center p-6 relative overflow-hidden group">
                     
                     {/* Grid background placeholder for transparent QR codes */}
                     {bgColor === "#ffffff00" && (
@@ -393,7 +393,7 @@ export default function QRCodeGenerator() {
                     )}
 
                     {errorMessage && (
-                      <div className="absolute inset-0 bg-red-500/90 text-white p-4 flex items-center justify-center text-center text-xs font-bold border-2 border-border rounded-base z-20">
+                      <div className="absolute inset-0 bg-red-500/90 text-white p-4 flex items-center justify-center text-center text-xs font-bold border-2 border-border rounded-none z-20">
                         {errorMessage}
                       </div>
                     )}
@@ -401,11 +401,11 @@ export default function QRCodeGenerator() {
 
                   {/* Stats Info */}
                   <div className="w-full grid grid-cols-2 gap-2 text-center text-xs font-bold">
-                    <div className="border-2 border-border bg-background p-2 rounded-base">
+                    <div className="border-2 border-border bg-background p-2 rounded-none">
                       <p className="text-foreground/50 uppercase text-[9px] tracking-wider">Ukuran</p>
                       <p className="text-foreground mt-0.5">{size} x {size} px</p>
                     </div>
-                    <div className="border-2 border-border bg-background p-2 rounded-base">
+                    <div className="border-2 border-border bg-background p-2 rounded-none">
                       <p className="text-foreground/50 uppercase text-[9px] tracking-wider">Koreksi (ECL)</p>
                       <p className="text-foreground mt-0.5">{errorCorrectionLevel} (Level)</p>
                     </div>
@@ -418,7 +418,7 @@ export default function QRCodeGenerator() {
                       type="button"
                       disabled={!qrDataUrl}
                       onClick={handleDownload}
-                      className={`w-full py-3 px-4 border-2 border-border font-black rounded-base shadow-shadow flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                      className={`w-full py-3 px-4 border-2 border-border font-black rounded-none shadow-shadow flex items-center justify-center gap-2 transition-all cursor-pointer ${
                         qrDataUrl 
                           ? "bg-main text-main-foreground hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none active:translate-x-boxShadowX active:translate-y-boxShadowY active:shadow-none" 
                           : "bg-background text-foreground/40 border-border/50 shadow-none cursor-not-allowed"
@@ -432,7 +432,7 @@ export default function QRCodeGenerator() {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="w-full py-2.5 px-4 bg-background text-foreground border-2 border-border font-bold rounded-base shadow-[2px_2px_0px_var(--border)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 transition-all cursor-pointer"
+                      className="w-full py-2.5 px-4 bg-background text-foreground border-2 border-border font-bold rounded-none shadow-[2px_2px_0px_var(--border)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none flex items-center justify-center gap-2 transition-all cursor-pointer"
                     >
                       <RotateCcw className="size-4" />
                       <span>Atur Ulang Pengaturan</span>

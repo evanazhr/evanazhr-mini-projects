@@ -25,7 +25,7 @@ export default function PageHeader({
     
     return (
         <div 
-            className="mx-auto my-4 w-[calc(100%-2rem)] max-w-5xl bg-secondary-background border-2 border-border border-l-8 rounded-base shadow-shadow" 
+            className="mx-auto my-4 w-[calc(100%-2rem)] max-w-5xl bg-secondary-background border-2 border-border border-l-8 rounded-none shadow-shadow" 
             style={{ borderLeftColor: accent }}
         >
             <div className="px-6 py-5 md:px-8">

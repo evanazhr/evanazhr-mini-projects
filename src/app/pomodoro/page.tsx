@@ -62,7 +62,7 @@ export default function Pomodoro() {
     <div className="min-h-[100dvh] bg-background bg-grid-pattern">
       <PageHeader {...projectsMeta.pomodoro} />
       <main className="mx-auto max-w-xl px-4 pb-12 md:px-8">
-        <section className="rounded-base border-2 border-border bg-secondary-background p-6 text-center shadow-shadow">
+        <section className="rounded-none border-2 border-border bg-secondary-background p-6 text-center shadow-shadow">
           <p className="font-bold">{mode === "work" ? "Waktu fokus" : "Waktu istirahat"}</p>
           <div className="my-8 text-8xl font-black tabular-nums">
             {minutes}:{remainingSeconds}
@@ -71,14 +71,14 @@ export default function Pomodoro() {
             <button
               type="button"
               onClick={running ? pause : start}
-              className="rounded-base border-2 border-border bg-main px-5 py-3 font-bold"
+              className="rounded-none border-2 border-border bg-main px-5 py-3 font-bold"
             >
               {running ? "Pause" : "Mulai"}
             </button>
             <button
               type="button"
               onClick={reset}
-              className="rounded-base border-2 border-border px-5 py-3 font-bold"
+              className="rounded-none border-2 border-border px-5 py-3 font-bold"
             >
               Reset
             </button>
@@ -94,7 +94,7 @@ export default function Pomodoro() {
                 min="1"
                 value={work}
                 onChange={(event) => setWork(Number(event.target.value) || 1)}
-                className="mt-2 h-10 w-full rounded-base border-2 border-border px-2"
+                className="mt-2 h-10 w-full rounded-none border-2 border-border px-2"
               />
             </label>
             <label className="font-bold">
@@ -104,7 +104,7 @@ export default function Pomodoro() {
                 min="1"
                 value={breakTime}
                 onChange={(event) => setBreakTime(Number(event.target.value) || 1)}
-                className="mt-2 h-10 w-full rounded-base border-2 border-border px-2"
+                className="mt-2 h-10 w-full rounded-none border-2 border-border px-2"
               />
             </label>
           </div>
