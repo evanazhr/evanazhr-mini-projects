@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import MobileBottomNavigation from "@/components/mobile-bottom-navigation";
 import Footer from "@/components/footer";
 import PWARegister from "@/components/pwa-register";
+import LanguageProvider from "@/components/language-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,11 +55,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-grid-pattern">
-        <PWARegister />
-        <Navbar />
-        {children}
-        <MobileBottomNavigation/>
-        <Footer/>
+        <LanguageProvider>
+          <PWARegister />
+          <Navbar />
+          {children}
+          <MobileBottomNavigation/>
+          <Footer/>
+        </LanguageProvider>
       </body>
     </html>
   );

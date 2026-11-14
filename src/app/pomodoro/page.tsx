@@ -109,6 +109,15 @@ export default function Pomodoro() {
             </label>
           </div>
         </section>
+
+        <section className="mt-5 rounded-none border-2 border-border bg-white p-5 shadow-shadow">
+          <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">Apa itu Pomodoro?</p>
+          <ul className="list-disc space-y-1.5 pl-4 text-xs font-semibold leading-relaxed text-foreground/70">
+            <li>Pomodoro adalah teknik fokus dengan membagi pekerjaan menjadi sesi kerja dan istirahat.</li>
+            <li>Atur durasi fokus dan istirahat, lalu tekan Mulai. Timer akan berpindah mode secara otomatis.</li>
+            <li>Setiap sesi kerja yang selesai akan menambah jumlah sesi. Gunakan Reset untuk mengulang timer saat ini.</li>
+          </ul>
+        </section>
       </main>
     </div>
   )

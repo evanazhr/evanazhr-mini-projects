@@ -7,6 +7,7 @@ import { Home, Menu, UserRound, X } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
+import LanguageSwitcher from "@/components/language-switcher"
 
 const navLinks = [
     { label: "Home", href: "/" },
@@ -75,6 +76,7 @@ export default function Navbar() {
                         </Button>
                     ))}
 
+                    <LanguageSwitcher />
                     <Button
                         asChild
                         variant="neutral"

@@ -442,6 +442,17 @@ export default function QRCodeGenerator() {
                 </CardContent>
               </Card>
 
+              <Card className="bg-white border-2 border-border shadow-shadow">
+                <CardContent className="p-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">Apa itu QR Code?</p>
+                  <ul className="list-disc space-y-1.5 pl-4 text-xs font-semibold leading-relaxed text-foreground/70">
+                    <li>QR Code adalah kode dua dimensi yang menyimpan informasi seperti URL, teks, email, atau nomor telepon.</li>
+                    <li>Gunakan warna foreground yang kontras dengan background agar kamera mudah membacanya.</li>
+                    <li>ECL menentukan kemampuan QR Code memulihkan data yang rusak: L sekitar 7%, M 15%, Q 25%, dan H 30%.</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
             </div>
 
           </div>

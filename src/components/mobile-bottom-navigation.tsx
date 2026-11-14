@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, UserRound } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
+import LanguageSwitcher from "@/components/language-switcher"
 
 export default function MobileBottomNavigation() {
   const pathname = usePathname()
@@ -15,7 +16,7 @@ export default function MobileBottomNavigation() {
       aria-label="Navigasi utama mobile"
       className="fixed inset-x-3 bottom-3 z-[100] md:hidden"
     >
-      <div className="grid min-h-16 grid-cols-3 items-center gap-1 rounded-none border-2 border-border bg-secondary-background px-2 pb-[env(safe-area-inset-bottom)] shadow-shadow">
+      <div className="grid min-h-16 grid-cols-4 items-center gap-1 rounded-none border-2 border-border bg-secondary-background px-2 pb-[env(safe-area-inset-bottom)] shadow-shadow">
         <Link
           href="/"
           aria-current={isHome ? "page" : undefined}
@@ -32,6 +33,7 @@ export default function MobileBottomNavigation() {
           <UserRound className="size-5" />
           <span>About</span>
         </Link>
+        <LanguageSwitcher compact />
         <a
           href="https://github.com/evanazhr"
           target="_blank"

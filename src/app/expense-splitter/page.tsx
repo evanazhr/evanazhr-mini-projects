@@ -129,6 +129,15 @@ export default function ExpenseSplitter() {
             <h2 className="text-xl font-black">Barang yang dibeli</h2>
             {items.length === 0 ? <p className="mt-4 text-foreground/60">Belum ada barang. Tambahkan barang di atas.</p> : <div className="mt-4 space-y-3">{items.map((item) => <div key={item.id} className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-border/20 pb-3"><div><p className="font-bold">{item.name} <span className="font-normal text-foreground/60">× {item.quantity}</span></p><p className="text-sm text-foreground/60">{item.buyers.join(", ")}</p></div><div className="flex items-center gap-3"><strong>{money(item.price * item.quantity)}</strong><button type="button" onClick={() => editItem(item)} className="font-bold underline">Edit</button><button type="button" onClick={() => deleteItem(item.id)} className="font-bold text-red-600">Hapus</button></div></div>)}</div>}
           </div>
+
+          <div className="rounded-none border-2 border-border bg-white p-5 shadow-shadow">
+            <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">Cara kerja Expense Splitter</p>
+            <ul className="list-disc space-y-1.5 pl-4 text-xs font-semibold leading-relaxed text-foreground/70">
+              <li>Tambahkan semua orang yang ikut membayar, lalu masukkan nama barang, harga satuan, dan jumlahnya.</li>
+              <li>Pilih orang yang menggunakan barang. Harga barang akan dibagi rata di antara orang yang dipilih.</li>
+              <li>Contoh: barang seharga Rp30.000 dengan jumlah 2 dan dipakai 3 orang akan menjadi Rp60.000, lalu masing-masing membayar Rp20.000.</li>
+            </ul>
+          </div>
         </section>
 
         <aside className="h-fit rounded-none border-2 border-border bg-main p-5 shadow-shadow md:sticky md:top-24">

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react"
 import PageHeader from "@/components/page-header"
 import projectsMeta from "@/data/projects-meta"
+import { Card, CardContent } from "@/components/ui/card"
 
 type StatusTuple = [number, string, string, string]
 
@@ -130,6 +131,8 @@ export default function HttpStatusExplorer() {
             </button>
           </div>
         )}
+
+        <Card className="mt-5 bg-white"><CardContent><p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">Apa itu status HTTP?</p><ul className="list-disc space-y-1.5 pl-4 text-xs font-semibold leading-relaxed text-foreground/70"><li>Status HTTP adalah kode dari server yang menjelaskan hasil sebuah request.</li><li>Kode <strong>2xx</strong> berarti berhasil, <strong>3xx</strong> berarti pengalihan, <strong>4xx</strong> berarti masalah dari request atau akses, dan <strong>5xx</strong> berarti masalah di server.</li><li>Contoh: <code className="font-mono">404</code> berarti resource tidak ditemukan, sedangkan <code className="font-mono">500</code> berarti terjadi error internal server.</li></ul></CardContent></Card>
       </main>
     </div>
   )

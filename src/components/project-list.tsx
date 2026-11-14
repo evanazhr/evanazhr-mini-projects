@@ -14,6 +14,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 import type { Project } from "@/types/project.type"
+import { useLanguage, translateValue } from "@/components/language-provider"
 
 const PAGE_SIZE_OPTIONS = [6, 12, 24, 48]
 
@@ -22,6 +23,8 @@ type Props = {
 }
 
 export default function ProjectList({ projects }: Props) {
+    const { language } = useLanguage()
+    const t = (value: string) => translateValue(value, language)
     const allCategories = useMemo(
         () => ["Semua", ...Array.from(new Set(projects.map((p) => p.category)))],
         [projects]
@@ -64,7 +67,7 @@ export default function ProjectList({ projects }: Props) {
                             <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-foreground/60 z-10" />
                             <Input
                                 type="text"
-                                placeholder="Cari project..."
+                                placeholder={t("Cari project...")}
                                 value={search}
                                 onChange={(e) => {
                                     setSearch(e.target.value)
@@ -84,12 +87,12 @@ export default function ProjectList({ projects }: Props) {
                                 }}
                             >
                                 <SelectTrigger className="w-full sm:w-[180px] bg-secondary-background text-foreground border-2 border-border shadow-shadow font-bold h-10">
-                                    <SelectValue placeholder="Kategori" />
+                                    <SelectValue placeholder={t("Kategori")} />
                                 </SelectTrigger>
                                 <SelectContent className="bg-secondary-background text-foreground border-2 border-border">
                                     {allCategories.map((cat) => (
                                         <SelectItem key={cat} value={cat} className="hover:bg-main/20">
-                                            {cat}
+                                            {t(cat)}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>

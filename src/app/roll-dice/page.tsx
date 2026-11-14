@@ -244,6 +244,17 @@ export default function RollDice() {
               </Card>
             </div>
           </div>
+
+          <Card className="mt-6 bg-white border-2 border-border shadow-shadow">
+            <CardContent className="p-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">Cara kerja Roll Dice</p>
+              <ul className="list-disc space-y-1.5 pl-4 text-xs font-semibold leading-relaxed text-foreground/70">
+                <li>Tekan Lempar Dadu untuk menghasilkan angka acak dari 1 sampai 6.</li>
+                <li>Riwayat menyimpan hasil lemparan dan statistik menampilkan frekuensi, total, serta rata-rata nilai.</li>
+                <li>Gunakan Reset untuk menghapus riwayat dan mengembalikan statistik ke kondisi awal.</li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </div>
