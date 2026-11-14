@@ -375,19 +375,22 @@ export default function BrainDump() {
             })}
           </div>
         )}
+      </div>
+
       {/* Info Box */}
-      <Card className='bg-white'>
-        <CardContent>
-          <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
-            Apa itu brain dump?
-          </p>
-          <ul className="text-xs font-semibold text-foreground/70 list-disc pl-4 space-y-1.5 leading-relaxed">
-            <li>Metode untuk menumpahkan semua isi kepala, ide, dan kekhawatiran ke dalam tulisan tanpa perlu langsung memfilternya.</li>
-            <li>Membantu mengurangi beban kognitif (*mental clutter*) dan menurunkan rasa cemas akibat terlalu banyak hal yang dipikirkan.</li>
-            <li>Memudahkan kamu memilah mana tugas yang mendesak, penting, atau bisa ditunda setelah semuanya tercatat dengan rapi.</li>
-          </ul>
-        </CardContent>
-      </Card>
+      <div className="mx-auto w-[calc(100%-2rem)] max-w-5xl pb-12">
+        <Card className="bg-white">
+          <CardContent>
+            <p className="text-xs font-bold uppercase tracking-wider text-foreground mb-1">
+              Apa itu brain dump?
+            </p>
+            <ul className="text-xs font-semibold text-foreground/70 list-disc pl-4 space-y-1.5 leading-relaxed">
+              <li>Metode untuk menumpahkan semua isi kepala, ide, dan kekhawatiran ke dalam tulisan tanpa perlu langsung memfilternya.</li>
+              <li>Membantu mengurangi beban kognitif (*mental clutter*) dan menurunkan rasa cemas akibat terlalu banyak hal yang dipikirkan.</li>
+              <li>Memudahkan kamu memilah mana tugas yang mendesak, penting, atau bisa ditunda setelah semuanya tercatat dengan rapi.</li>
+            </ul>
+          </CardContent>
+        </Card>
       </div>
 
     </div>
