@@ -6,6 +6,7 @@ import MobileBottomNavigation from "@/components/mobile-bottom-navigation";
 import Footer from "@/components/footer";
 import PWARegister from "@/components/pwa-register";
 import LanguageProvider from "@/components/language-provider";
+import PomodoroProvider from "@/components/pomodoro-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,11 +57,13 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-grid-pattern">
         <LanguageProvider>
-          <PWARegister />
-          <Navbar />
-          {children}
-          <MobileBottomNavigation/>
-          <Footer/>
+          <PomodoroProvider>
+            <PWARegister />
+            <Navbar />
+            {children}
+            <MobileBottomNavigation/>
+            <Footer/>
+          </PomodoroProvider>
         </LanguageProvider>
       </body>
     </html>
