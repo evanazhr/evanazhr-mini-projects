@@ -11,7 +11,7 @@ export default function Footer() {
                 <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
                     <div>
                         <Link href="/" className="inline-flex items-center gap-3" aria-label="Kembali ke beranda">
-                            <Image src="/Project, Tools, and Utility.png" alt="" width={44} height={44} className="object-cover" aria-hidden="true" />
+                            <Image src="/logo.png" alt="" width={44} height={44} className="object-cover" aria-hidden="true" />
                             <span className="text-xl font-black tracking-tight">mini projects</span>
                         </Link>
                         <p className="mt-4 max-w-sm text-sm font-medium leading-6 text-foreground/65">

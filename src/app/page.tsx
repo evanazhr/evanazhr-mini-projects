@@ -28,7 +28,7 @@ export default function Home() {
                         </div>
                         <div className="relative border-2 border-border bg-main p-2 shadow-shadow">
                             <Image
-                                src="/Project, Tools, and Utility.png"
+                                src="/logo.png"
                                 alt="Ilustrasi kumpulan project, tools, dan utility"
                                 width={790}
                                 height={595}

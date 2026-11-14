@@ -14,7 +14,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 import type { Project } from "@/types/project.type"
-import { useLanguage, translateValue } from "@/components/language-provider"
+import { useLanguageStore, translateValue } from "@/stores/language-store"
 
 const PAGE_SIZE_OPTIONS = [6, 12, 24, 48]
 
@@ -23,7 +23,7 @@ type Props = {
 }
 
 export default function ProjectList({ projects }: Props) {
-    const { language } = useLanguage()
+    const language = useLanguageStore((state) => state.language)
     const t = (value: string) => translateValue(value, language)
     const allCategories = useMemo(
         () => ["Semua", ...Array.from(new Set(projects.map((p) => p.category)))],
@@ -103,7 +103,7 @@ export default function ProjectList({ projects }: Props) {
             </section>
 
             {/* ── Project Grid ── */}
-            <section className="mx-auto max-w-5xl px-4 py-10 md:px-8 xl:px-16">
+            <section id="projects" className="mx-auto max-w-5xl scroll-mt-24 px-4 py-10 md:px-8 xl:px-16">
                 {filtered.length === 0 ? (
                     <div className="flex flex-col items-center gap-4 py-20 text-center">
                         <div className="border-2 border-border bg-main p-5 shadow-shadow rounded-none">

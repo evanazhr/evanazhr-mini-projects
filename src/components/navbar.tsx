@@ -11,6 +11,7 @@ import LanguageSwitcher from "@/components/language-switcher"
 
 const navLinks = [
     { label: "Home", href: "/" },
+    { label: "Projects", href: "/#projects" },
     { label: "About", href: "/about" },
 ]
 
@@ -56,7 +57,7 @@ export default function Navbar() {
                     aria-label="Kembali ke beranda"
                     className="flex min-w-0 items-center gap-2 truncate text-base font-black tracking-tight text-foreground transition-opacity hover:opacity-90 sm:text-lg"
                 >              
-                    <img src="/Project, Tools, and Utility.png" alt="" className="size-9 shrink-0 object-cover" aria-hidden="true" />
+                    <img src="/logo.png" alt="" className="size-9 shrink-0 object-cover" aria-hidden="true" />
                     <span className="truncate">mini projects</span>
                 </Link>
 

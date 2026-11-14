@@ -2,10 +2,22 @@
 
 import PageHeader from "@/components/page-header"
 import projectsMeta from "@/data/projects-meta"
-import { usePomodoro } from "@/components/pomodoro-provider"
+import { usePomodoroStore } from "@/stores/pomodoro-store"
 
 export default function Pomodoro() {
-  const { work, breakTime, mode, seconds, sessions, running, notificationPermission, setWork, setBreakTime, start, pause, reset, requestNotificationPermission } = usePomodoro()
+  const work = usePomodoroStore((state) => state.work)
+  const breakTime = usePomodoroStore((state) => state.breakTime)
+  const mode = usePomodoroStore((state) => state.mode)
+  const seconds = usePomodoroStore((state) => state.seconds)
+  const sessions = usePomodoroStore((state) => state.sessions)
+  const running = usePomodoroStore((state) => state.running)
+  const notificationPermission = usePomodoroStore((state) => state.notificationPermission)
+  const setWork = usePomodoroStore((state) => state.setWork)
+  const setBreakTime = usePomodoroStore((state) => state.setBreakTime)
+  const start = usePomodoroStore((state) => state.start)
+  const pause = usePomodoroStore((state) => state.pause)
+  const reset = usePomodoroStore((state) => state.reset)
+  const requestNotificationPermission = usePomodoroStore((state) => state.requestNotificationPermission)
   const minutes = String(Math.floor(seconds / 60)).padStart(2, "0")
   const remainingSeconds = String(seconds % 60).padStart(2, "0")
 

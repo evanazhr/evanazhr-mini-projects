@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | evanazhr.mini.projects",
-    default: "evanazhr.mini.projects",
+    template: "%s | Evan Azhar Mini Projects",
+    default: "Evan Azhar Mini Projects",
   },
   description: "Kumpulan mini project interaktif yang dibuat oleh evanazhr untuk belajar dan bereksperimen.",
   icons: {
